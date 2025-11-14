@@ -1,0 +1,2798 @@
+[
+  {
+    "major": {
+      "code": "050204",
+      "name": "法语",
+      "displayName": "法语",
+      "developmentPotential": "93",
+      "score": "1.00",
+      "opportunityScore": "85",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "22",
+      "industryProspectsScore": "20",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "北京外国语大学",
+        "schoolNature": "public",
+        "rankDiffPer": 778.1190019193857,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4135215,
+            "schoolMajorId": 719,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "法语",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "604,1042,1"
+              },
+              {
+                "2023": "599,1193,2"
+              },
+              {
+                "2022": "633,170,1"
+              }
+            ],
+            "majorCode": "050204",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "30.34",
+        "employmentRate": "96.19",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中南大学",
+        "schoolNature": "public",
+        "rankDiffPer": 452.20277610138805,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4009104,
+            "schoolMajorId": 6048,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：英语、法语、日语、西班牙语））",
+            "planMajorName": "法语",
+            "planNum": 7,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5300",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "596,1657,6"
+              },
+              {
+                "2023": "592,1803,6"
+              },
+              {
+                "2022": "601,1690,6"
+              }
+            ],
+            "majorCode": "050204",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "湖南",
+        "cityName": "长沙市",
+        "enrollmentRate": "41.66",
+        "employmentRate": "94.48",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "电子科技大学",
+        "schoolNature": "public",
+        "rankDiffPer": 264.6871263451574,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4018537,
+            "schoolMajorId": 33848,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：英语、日语、法语））清水河校区就读。）",
+            "planMajorName": "法语",
+            "planNum": 30,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "588,2509,40"
+              },
+              {
+                "2023": "583,2901,36"
+              },
+              {
+                "2022": "594,2428,33"
+              }
+            ],
+            "majorCode": "050204",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,两电一邮",
+        "belong": "教育部",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "22.73",
+        "employmentRate": "95.30",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "湖南师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 165.60232220609578,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4151225,
+            "schoolMajorId": 89908,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：英语、俄语、德语、法语、西班牙语、阿拉伯语、日语、朝鲜语）（外语口试）（含：世承书院锺书班）",
+            "planMajorName": "法语",
+            "planNum": 4,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "581,3445,2"
+              },
+              {
+                "2023": "579,3517,4"
+              },
+              {
+                "2022": "586,3540,5"
+              }
+            ],
+            "majorCode": "050204",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "湖南",
+        "cityName": "长沙市",
+        "enrollmentRate": "24.68",
+        "employmentRate": "85.78",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "西南交通大学",
+        "schoolNature": "public",
+        "rankDiffPer": 145.505768714784,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4058768,
+            "schoolMajorId": 1291,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：英语、翻译、日语、德语、法语）（犀浦校区就读）（犀浦校区就读）",
+            "planMajorName": "法语",
+            "planNum": 44,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5760",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "579,3727,42"
+              },
+              {
+                "2023": "578,3670,42"
+              },
+              {
+                "2022": "586,3540,42"
+              }
+            ],
+            "majorCode": "050204",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "34.89",
+        "employmentRate": "92.86",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "030304",
+      "name": "女性学",
+      "displayName": "女性学",
+      "developmentPotential": "90",
+      "score": "1.00",
+      "opportunityScore": "80",
+      "academicDevelopmentScore": "22",
+      "careerDevelopmentScore": "19",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "18",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "中华女子学院",
+        "schoolNature": "public",
+        "rankDiffPer": -6.746840603342845,
+        "group": 3,
+        "historyScores": [
+          {
+            "id": 4118690,
+            "schoolMajorId": 30771,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（只招女生）（第一年在北校区）",
+            "planMajorName": "女性学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "553,9812,2"
+              },
+              {
+                "2023": "542,13651,3"
+              },
+              {
+                "2022": "561,9358,3"
+              }
+            ],
+            "majorCode": "030304",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "",
+        "belong": "全国妇联",
+        "provinceName": "北京",
+        "cityName": "朝阳区",
+        "enrollmentRate": "10.39",
+        "employmentRate": "92.57",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "100513",
+      "name": "中医骨伤科学",
+      "displayName": "中医骨伤科学",
+      "developmentPotential": "93",
+      "score": "1.00",
+      "opportunityScore": "86",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "23",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "21",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "成都中医药大学",
+        "schoolNature": "public",
+        "rankDiffPer": 59.909122684376094,
+        "group": 1,
+        "historyScores": [
+          {
+            "id": 4223473,
+            "schoolMajorId": 1131148,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（不招收色盲色弱考生）（不招收色盲色弱考生。）",
+            "planMajorName": "中医骨伤科学",
+            "planNum": 8,
+            "subjectSelection": "不限",
+            "studyPeriod": "5",
+            "tuition": "6960",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "568,5722,18"
+              },
+              {
+                "2023": "565,6249,16"
+              },
+              {
+                "2022": "572,6291,10"
+              }
+            ],
+            "majorCode": "100513",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "双一流,101计划,研究生院,保研,省重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "25.92",
+        "employmentRate": "91.65",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "长春中医药大学",
+        "schoolNature": "public",
+        "rankDiffPer": 11.490191300109663,
+        "group": 2,
+        "historyScores": [
+          {
+            "id": 4337549,
+            "schoolMajorId": 1131090,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（不招色盲色弱。）",
+            "planMajorName": "中医骨伤科学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "5",
+            "tuition": "6160",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "558,8207,2"
+              },
+              {
+                "2023": "550,10591,2"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "100513",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点",
+        "belong": "省政府",
+        "provinceName": "吉林",
+        "cityName": "长春市",
+        "enrollmentRate": "24.34",
+        "employmentRate": "91.11",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "贵州中医药大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4034788,
+            "schoolMajorId": 1131153,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（患有轻度色觉异常（俗称色弱）、色觉异常Ⅱ度（俗称色盲）或不能准确识别红、黄、绿、兰、紫各种颜色中任何一种颜色的导线、按键、信号灯、几何图形者不能报考）（患有轻度色觉异常（俗称色弱）、色觉异常Ⅱ度（俗称色盲）或不能准确识别红、黄、绿、兰、紫各种颜色中任何一种颜色的导线、按键、信号灯、几何图形者不能报考）",
+            "planMajorName": "中医骨伤科学",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "5",
+            "tuition": "4500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "543,13269,2"
+              },
+              {
+                "2022": "549,13800,2"
+              }
+            ],
+            "majorCode": "100513",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点",
+        "belong": "省政府",
+        "provinceName": "贵州",
+        "cityName": "贵阳市",
+        "enrollmentRate": "9.90",
+        "employmentRate": "80.01",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "辽宁中医药大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4332280,
+            "schoolMajorId": 1131087,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（不录取色盲色弱考生；非英语语种考生慎报；沈阳校区（第一学年本溪校区就读）。）",
+            "planMajorName": "中医骨伤科学",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "5",
+            "tuition": "5500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "100513",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "保研,省重点",
+        "belong": "省政府",
+        "provinceName": "辽宁",
+        "cityName": "沈阳市",
+        "enrollmentRate": "49.63",
+        "employmentRate": "84.92",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "成都体育学院",
+        "schoolNature": "public",
+        "rankDiffPer": -23.37325182145549,
+        "group": 4,
+        "historyScores": [
+          {
+            "id": 4128532,
+            "schoolMajorId": 1499799,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（不予录取色弱、色盲考生）（不予录取色弱、色盲考生。）",
+            "planMajorName": "中医骨伤科学",
+            "planNum": 24,
+            "subjectSelection": "不限",
+            "studyPeriod": "5",
+            "tuition": "6960",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "547,11941,20"
+              },
+              {
+                "2023": "551,10256,7"
+              },
+              {
+                "2022": "552,12582,7"
+              }
+            ],
+            "majorCode": "100513",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省属",
+        "belong": "省政府",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "8.49",
+        "employmentRate": "83.56",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "071101",
+      "name": "心理学",
+      "displayName": "心理学",
+      "developmentPotential": "93",
+      "score": "1.00",
+      "opportunityScore": "86",
+      "academicDevelopmentScore": "23",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "20",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "西南大学",
+        "schoolNature": "public",
+        "rankDiffPer": 217.26768377253816,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4098192,
+            "schoolMajorId": 886385,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（不招色盲考生）",
+            "planMajorName": "心理学",
+            "planNum": 4,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "585,2884,1"
+              },
+              {
+                "2023": "599,1193,1"
+              },
+              {
+                "2022": "600,1775,1"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "重庆",
+        "cityName": "北碚区",
+        "enrollmentRate": "18.09",
+        "employmentRate": "91.49",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "辽宁师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4306795,
+            "schoolMajorId": 145716,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（师范）",
+            "planMajorName": "心理学",
+            "planNum": 4,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          },
+          {
+            "id": 4306794,
+            "schoolMajorId": 145716,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（师范）",
+            "planMajorName": "心理学",
+            "planNum": 4,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "保研,省重点",
+        "belong": "省政府",
+        "provinceName": "辽宁",
+        "cityName": "大连市",
+        "enrollmentRate": "28.00",
+        "employmentRate": "80.50",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "江西师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4222348,
+            "schoolMajorId": 9053,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：心理学（师范）、应用心理学）",
+            "planMajorName": "心理学",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4660",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "556,8649,1"
+              },
+              {
+                "2022": "561,9358,2"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "江西",
+        "cityName": "南昌市",
+        "enrollmentRate": "19.72",
+        "employmentRate": "90.75",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "四川师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4382076,
+            "schoolMajorId": 13364,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（师范）",
+            "planMajorName": "心理学",
+            "planNum": 9,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6240",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点",
+        "belong": "省政府",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "14.97",
+        "employmentRate": "90.98",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "东北师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4042020,
+            "schoolMajorId": 7372,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（师范）（人民大街校区）",
+            "planMajorName": "心理学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6320",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "071101",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "吉林",
+        "cityName": "长春市",
+        "enrollmentRate": "23.74",
+        "employmentRate": "98.03",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "010103",
+      "name": "宗教学",
+      "displayName": "宗教学",
+      "developmentPotential": "90",
+      "score": "1.00",
+      "opportunityScore": "80",
+      "academicDevelopmentScore": "22",
+      "careerDevelopmentScore": "19",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "18",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "中国人民大学",
+        "schoolNature": "public",
+        "rankDiffPer": 8294.495412844037,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3983174,
+            "schoolMajorId": 1168,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：哲学、宗教学、伦理学、汉语言文学、汉语言、历史学、世界史、考古学、中国古典学）（国际学位项目：根特大学、夏威夷大学联合培养项目,加拿大西安大略大学哲学系“1＋1+1”项目。国际交流项目：约翰霍普金斯大学、牛津大学赫特福德学院、香港科技大学等学生交换项目,日本东京大学互访研学项目,德国波恩大学硕士交流项目等）",
+            "planMajorName": "宗教学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "630,109,5"
+              },
+              {
+                "2023": "627,104,4"
+              },
+              {
+                "2022": "640,82,3"
+              }
+            ],
+            "majorCode": "010103",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": null,
+        "employmentRate": null,
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中央民族大学",
+        "schoolNature": "public",
+        "rankDiffPer": 264.6871263451574,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4125883,
+            "schoolMajorId": 1060,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：哲学、宗教学））丰台校区就读。）",
+            "planMajorName": "宗教学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "588,2509,2"
+              },
+              {
+                "2023": "584,2772,2"
+              },
+              {
+                "2022": "598,1996,3"
+              }
+            ],
+            "majorCode": "010103",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,研究生院,保研,国重点,部委院校",
+        "belong": "国民委",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "26.89",
+        "employmentRate": "92.01",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "北京大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4924284,
+            "schoolMajorId": 72,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：哲学、宗教学、哲学）（科技哲学与逻辑学方向）",
+            "planMajorName": "宗教学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,1"
+              },
+              {
+                "2023": "651,30,1"
+              },
+              {
+                "2022": "668,29,1"
+              }
+            ],
+            "majorCode": "010103",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "54.11",
+        "employmentRate": "94.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "山东大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3993534,
+            "schoolMajorId": 2160206,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：哲学、宗教学））",
+            "planMajorName": "宗教学",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5280",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "010103",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "山东",
+        "cityName": "济南市",
+        "enrollmentRate": "40.99",
+        "employmentRate": "95.51",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "新疆师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": -70.91914569031273,
+        "group": 5,
+        "historyScores": [
+          {
+            "id": 4119693,
+            "schoolMajorId": 1801871,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（温泉校区就读）（温泉校区就读）",
+            "planMajorName": "宗教学",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "3100",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "511,31464,1"
+              },
+              {
+                "2023": "512,30127,1"
+              },
+              {
+                "2022": "521,29170,1"
+              }
+            ],
+            "majorCode": "010103",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "保研,省重点",
+        "belong": "自治区政府",
+        "provinceName": "新疆",
+        "cityName": "乌鲁木齐市",
+        "enrollmentRate": "0.00",
+        "employmentRate": "89.58",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "020303",
+      "name": "保险学",
+      "displayName": "保险学",
+      "developmentPotential": "93",
+      "score": "1.00",
+      "opportunityScore": "85",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "21",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "复旦大学",
+        "schoolNature": "public",
+        "rankDiffPer": 14900,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4931079,
+            "schoolMajorId": 1025680,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：经济学）（数理经济方向）、经济学、经济学（国际项目UIPE）、金融学、国际经济与贸易（国际经济学、全球大数据与AI）、财政学（智慧税务与数智财政）、保险学（精算学与智能风险管理）（含：数理经济拔尖班、经济学国际项目UIPE；含：国际经济与贸易-数据科学与大数据技术、经济学）（数理经济方向）（-人工智能、经济学-人工智能、金融学-人工智能、财政学-人工智能双学士学位）",
+            "planMajorName": "保险学",
+            "planNum": 5,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "635,61,4"
+              },
+              {
+                "2023": "629,80,5"
+              },
+              {
+                "2022": "641,72,5"
+              }
+            ],
+            "majorCode": "020303",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9",
+        "belong": "教育部",
+        "provinceName": "上海",
+        "cityName": "杨浦区",
+        "enrollmentRate": "47.01",
+        "employmentRate": "96.25",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中国人民大学",
+        "schoolNature": "public",
+        "rankDiffPer": 9634.042553191488,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3984072,
+            "schoolMajorId": 1163,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：金融学、保险学）（国际交流：含：剑桥大学本科生访学项目、康奈尔大学暑期学校,伊利诺伊大学香槟分校、明尼苏达双���大学、威斯康辛大学麦迪逊分校、新加坡管理大学、3＋1学位联合培养等）",
+            "planMajorName": "保险学",
+            "planNum": 7,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "632,94,5"
+              },
+              {
+                "2023": "630,71,5"
+              },
+              {
+                "2022": "640,82,4"
+              }
+            ],
+            "majorCode": "020303",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": null,
+        "employmentRate": null,
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南京大学",
+        "schoolNature": "public",
+        "rankDiffPer": 5618.75,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4933155,
+            "schoolMajorId": 1024452,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（数智经济与管理）（含：经济学、金融学、保险学、经济学（产业经济学方向）、工商管理类、国际经济与贸易、财政学））鼓楼校区/仙林校区就读。）",
+            "planMajorName": "保险学",
+            "planNum": 7,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5720",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "627,160,7"
+              },
+              {
+                "2023": "624,155,6"
+              },
+              {
+                "2022": "633,170,6"
+              }
+            ],
+            "majorCode": "020303",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9",
+        "belong": "教育部",
+        "provinceName": "江苏",
+        "cityName": "南京市",
+        "enrollmentRate": "53.34",
+        "employmentRate": "96.77",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南开大学",
+        "schoolNature": "public",
+        "rankDiffPer": 3604.4534412955463,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3996402,
+            "schoolMajorId": 1891,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（津南校区）（含：金融学、保险学）（保险与精算）（专业大类内，专业任选））",
+            "planMajorName": "保险学",
+            "planNum": 5,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "623,247,2"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "020303",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "天津",
+        "cityName": "南开区",
+        "enrollmentRate": "43.14",
+        "employmentRate": "95.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "对外经济贸易大学",
+        "schoolNature": "public",
+        "rankDiffPer": 844.2724458204335,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4065799,
+            "schoolMajorId": 1481,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：金融学、金融学（国际金融与市场）、经济与金融、投资学、保险学）",
+            "planMajorName": "保险学",
+            "planNum": 6,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "605,969,6"
+              },
+              {
+                "2023": "608,637,6"
+              },
+              {
+                "2022": "619,524,7"
+              }
+            ],
+            "majorCode": "020303",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,101计划,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "朝阳区",
+        "enrollmentRate": "35.91",
+        "employmentRate": "91.17",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "050232",
+      "name": "葡萄牙语",
+      "displayName": "葡萄牙语",
+      "developmentPotential": "93",
+      "score": "1.00",
+      "opportunityScore": "85",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "23",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "20",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "广东外语外贸大学",
+        "schoolNature": "public",
+        "rankDiffPer": 66.24273255813954,
+        "group": 1,
+        "historyScores": [
+          {
+            "id": 4239980,
+            "schoolMajorId": 14827,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（白云山校区）",
+            "planMajorName": "葡萄牙语",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6853",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "569,5504,1"
+              },
+              {
+                "2023": "563,6737,1"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "050232",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点",
+        "belong": "省政府",
+        "provinceName": "广东",
+        "cityName": "广州市",
+        "enrollmentRate": "15.15",
+        "employmentRate": "95.36",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "湖北大学",
+        "schoolNature": "public",
+        "rankDiffPer": 15.647118301314459,
+        "group": 2,
+        "historyScores": [
+          {
+            "id": 4203923,
+            "schoolMajorId": 106591,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（第一学年在武昌校区）",
+            "planMajorName": "葡萄牙语",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "559,7912,2"
+              },
+              {
+                "2023": "563,6737,2"
+              },
+              {
+                "2022": "567,7578,2"
+              }
+            ],
+            "majorCode": "050232",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "湖北",
+        "cityName": "武汉市",
+        "enrollmentRate": "29.82",
+        "employmentRate": "85.29",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "河北传媒学院",
+        "schoolNature": "private",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4024461,
+            "schoolMajorId": 54336,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（鹿泉校区就读。）",
+            "planMajorName": "葡萄牙语",
+            "planNum": 3,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "16000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "050232",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "",
+        "belong": "省教育厅",
+        "provinceName": "河北",
+        "cityName": "石家庄",
+        "enrollmentRate": "1.86",
+        "employmentRate": "85.59",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "浙江外国语学院",
+        "schoolNature": "public",
+        "rankDiffPer": -43.64375461936438,
+        "group": 5,
+        "historyScores": [
+          {
+            "id": 4049468,
+            "schoolMajorId": 1678460,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "葡萄牙语",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4800",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "537,16236,2"
+              },
+              {
+                "2023": "537,15879,2"
+              },
+              {
+                "2022": "543,16505,2"
+              }
+            ],
+            "majorCode": "050232",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "省属",
+        "belong": "省政府",
+        "provinceName": "浙江",
+        "cityName": "杭州市",
+        "enrollmentRate": "7.59",
+        "employmentRate": "93.94",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "四川轻化工大学",
+        "schoolNature": "public",
+        "rankDiffPer": -59.41990420436403,
+        "group": 5,
+        "historyScores": [
+          {
+            "id": 4126435,
+            "schoolMajorId": 1130834,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "葡萄牙语",
+            "planNum": 18,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5520",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "525,22548,36"
+              },
+              {
+                "2023": "524,22544,15"
+              },
+              {
+                "2022": "528,24629,12"
+              }
+            ],
+            "majorCode": "050232",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "省属",
+        "belong": "省政府",
+        "provinceName": "四川",
+        "cityName": "自贡市",
+        "enrollmentRate": "12.92",
+        "employmentRate": "88.30",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "070504",
+      "name": "地理信息科学",
+      "displayName": "地理信息科学",
+      "developmentPotential": "87",
+      "score": "0.87",
+      "opportunityScore": "87",
+      "academicDevelopmentScore": "23",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "21",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.00",
+      "tiaozhanDeduction": "0.13"
+    },
+    "schools": [
+      {
+        "schoolName": "华中师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 369.7125256673511,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4532267,
+            "schoolMajorId": 21974,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：地理科学（非师范）、地理信息科学））",
+            "planMajorName": "地理信息科学",
+            "planNum": 2,
+            "subjectSelection": "地理",
+            "studyPeriod": "4",
+            "tuition": "4500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "593,1948,2"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "070504",
+            "pattern": "历史_地理"
+          }
+        ],
+        "schoolFeature": "211,双一流,101计划,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "湖北",
+        "cityName": "武汉市",
+        "enrollmentRate": "20.63",
+        "employmentRate": "86.16",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "海南师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4531850,
+            "schoolMajorId": 27918,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：自然地理与资源环境、人文地理与城乡规划、地理信息科学）（桂林洋校区就读）（桂林洋校区就读）",
+            "planMajorName": "地理信息科学",
+            "planNum": 3,
+            "subjectSelection": "地理",
+            "studyPeriod": "4",
+            "tuition": "4620",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "070504",
+            "pattern": "历史_地理"
+          }
+        ],
+        "schoolFeature": "保研,省重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "海南",
+        "cityName": "海口市",
+        "enrollmentRate": null,
+        "employmentRate": null,
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "成都信息工程大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4532068,
+            "schoolMajorId": 13687,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "地理信息科学",
+            "planNum": 12,
+            "subjectSelection": "地理",
+            "studyPeriod": "4",
+            "tuition": "6240",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "070504",
+            "pattern": "历史_地理"
+          }
+        ],
+        "schoolFeature": "研究生院,省重点",
+        "belong": "省政府",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "17.17",
+        "employmentRate": "84.25",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "延边大学",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4535634,
+            "schoolMajorId": 6587,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：地理科学、地理信息科学）（珲春校区）（第一学年末分流。地理科学，专业为师范）",
+            "planMajorName": "地理信息科学",
+            "planNum": 3,
+            "subjectSelection": "地理",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "070504",
+            "pattern": "历史_地理"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "吉林",
+        "cityName": "延边朝鲜族自治州",
+        "enrollmentRate": "18.25",
+        "employmentRate": "86.35",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "陇东学院",
+        "schoolNature": "public",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4534814,
+            "schoolMajorId": 2157320,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "地理信息科学",
+            "planNum": 2,
+            "subjectSelection": "地理",
+            "studyPeriod": "4",
+            "tuition": "4400",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "070504",
+            "pattern": "历史_地理"
+          }
+        ],
+        "schoolFeature": "省属",
+        "belong": "省政府",
+        "provinceName": "甘肃",
+        "cityName": "庆阳市",
+        "enrollmentRate": null,
+        "employmentRate": null,
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "120601",
+      "name": "物流管理",
+      "displayName": "物流管理",
+      "developmentPotential": "87",
+      "score": "0.87",
+      "opportunityScore": "87",
+      "academicDevelopmentScore": "22",
+      "careerDevelopmentScore": "21",
+      "growthPotentialScore": "22",
+      "industryProspectsScore": "22",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.13",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "武汉大学",
+        "schoolNature": "public",
+        "rankDiffPer": 2359.677419354839,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4938117,
+            "schoolMajorId": 2161860,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：工商管理、市场营销、会计学、财务管理、人力资源管理、物流管理）（含：工商管理国际试验班（战略与投资方向）、市场营销（数智特色创新试验班）、物流管理（供应链运营方向试验班）、工程管理、管理科学（商业大数据分析方向试验班）））",
+            "planMajorName": "物流管理",
+            "planNum": 7,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5850",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "618,372,12"
+              },
+              {
+                "2023": "616,333,5"
+              },
+              {
+                "2022": "628,264,6"
+              }
+            ],
+            "majorCode": "120601",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "湖北",
+        "cityName": "武汉市",
+        "enrollmentRate": "47.59",
+        "employmentRate": "87.10",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南开大学",
+        "schoolNature": "public",
+        "rankDiffPer": 1871.9827586206898,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3998820,
+            "schoolMajorId": 1893,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（未来商业领导者计划）（含：工商管理、人力资源管理、财务管理、会计学、市场营销、物流管理、图书馆学、档案学、旅游管理、会展经济与管理）（八里台校区/津南校区）（专业大类内，专业任选））",
+            "planMajorName": "物流管理",
+            "planNum": 10,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "615,464,9"
+              },
+              {
+                "2023": "611,503,8"
+              },
+              {
+                "2022": "622,416,8"
+              }
+            ],
+            "majorCode": "120601",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "天津",
+        "cityName": "南开区",
+        "enrollmentRate": "43.14",
+        "employmentRate": "95.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中南财经政法大学",
+        "schoolNature": "public",
+        "rankDiffPer": 156.73400673400673,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4088317,
+            "schoolMajorId": 21519,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：工商管理、工商管理（商务分析方向）、市场营销、人力资源管理、物流管理、旅游管理、劳动关系）（专业类内，专业任选）",
+            "planMajorName": "物流管理",
+            "planNum": 6,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "4500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "580,3564,5"
+              },
+              {
+                "2023": "585,2645,5"
+              },
+              {
+                "2022": "594,2428,5"
+              }
+            ],
+            "majorCode": "120601",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "湖北",
+        "cityName": "武汉市",
+        "enrollmentRate": "0.00",
+        "employmentRate": "93.80",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "江苏大学",
+        "schoolNature": "public",
+        "rankDiffPer": 42.589995324918185,
+        "group": 1,
+        "historyScores": [
+          {
+            "id": 4134077,
+            "schoolMajorId": 8789,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "物流管理",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "565,6417,2"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "120601",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,国重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "江苏",
+        "cityName": "镇江市",
+        "enrollmentRate": "0.00",
+        "employmentRate": "93.91",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南京信息工程大学",
+        "schoolNature": "public",
+        "rankDiffPer": 24.06779661016949,
+        "group": 2,
+        "historyScores": [
+          {
+            "id": 4165211,
+            "schoolMajorId": 8548,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "物流管理",
+            "planNum": 5,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5720",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "561,7375,5"
+              },
+              {
+                "2023": "563,6737,2"
+              },
+              {
+                "2022": "571,6572,2"
+              }
+            ],
+            "majorCode": "120601",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "双一流,研究生院,保研,国重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "江苏",
+        "cityName": "南京市",
+        "enrollmentRate": "36.10",
+        "employmentRate": "95.25",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "120202",
+      "name": "市场营销",
+      "displayName": "市场营销",
+      "developmentPotential": "87",
+      "score": "0.87",
+      "opportunityScore": "87",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "22",
+      "industryProspectsScore": "22",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.13",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "北京大学",
+        "schoolNature": "public",
+        "rankDiffPer": 30400,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4925822,
+            "schoolMajorId": 120,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：金融学、金融学（金融经济学）、会计学、市场营销）",
+            "planMajorName": "市场营销",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "650,30,1"
+              },
+              {
+                "2023": "651,30,1"
+              },
+              {
+                "2022": "655,29,1"
+              }
+            ],
+            "majorCode": "120202",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "54.11",
+        "employmentRate": "94.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中国人民大学",
+        "schoolNature": "public",
+        "rankDiffPer": 11337.5,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3986961,
+            "schoolMajorId": 1141,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（数智化方向）（含：工商管理、财务管理、会计学、市场营销、贸易经济）（无时点，专业选择。国际交流：含：新加坡管理大学项目,新加坡南洋理工大学、西班牙ESADE商学院、荷兰阿姆斯特丹大学等校免学费交流项目）",
+            "planMajorName": "市场营销",
+            "planNum": 5,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "633,80,5"
+              },
+              {
+                "2023": "627,104,5"
+              },
+              {
+                "2022": "638,107,5"
+              }
+            ],
+            "majorCode": "120202",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": null,
+        "employmentRate": null,
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "武汉大学",
+        "schoolNature": "public",
+        "rankDiffPer": 2359.677419354839,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4938010,
+            "schoolMajorId": 2161859,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：工商管理、市场营销、会计学、财务管理、人力资源管理、物流管理）（含：工商管理国际试验班（战略与投资方向）、市场营销（数智特色创新试验班）、物流管理（供应链运营方向试验班）、工程管理、管理科学（商业大数据分析方向试验班）））",
+            "planMajorName": "市场营销",
+            "planNum": 7,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5850",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "618,372,12"
+              },
+              {
+                "2023": "616,333,5"
+              },
+              {
+                "2022": "628,264,6"
+              }
+            ],
+            "majorCode": "120202",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,五院四系",
+        "belong": "教育部",
+        "provinceName": "湖北",
+        "cityName": "武汉市",
+        "enrollmentRate": "47.59",
+        "employmentRate": "87.10",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南开大学",
+        "schoolNature": "public",
+        "rankDiffPer": 1871.9827586206898,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3998509,
+            "schoolMajorId": 1933,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（未来商业领导者计划）（含：工商管理、人力资源管理、财务管理、会计学、市场营销、物流管理、图书馆学、档案学、旅游管理、会展经济与管理）（八里台校区/津南校区）（专业大类内，专业任选））",
+            "planMajorName": "市场营销",
+            "planNum": 10,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "615,464,9"
+              },
+              {
+                "2023": "611,503,8"
+              },
+              {
+                "2022": "622,416,8"
+              }
+            ],
+            "majorCode": "120202",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "天津",
+        "cityName": "南开区",
+        "enrollmentRate": "43.14",
+        "employmentRate": "95.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "厦门大学",
+        "schoolNature": "public",
+        "rankDiffPer": 1871.9827586206898,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4002274,
+            "schoolMajorId": 4449,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：人力资源管理、工商管理、市场营销（含：数智营销方向）、旅游管理）（思明校区就读）（思明校区就读）",
+            "planMajorName": "市场营销",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5460",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "615,464,2"
+              },
+              {
+                "2023": "610,540,2"
+              },
+              {
+                "2022": "620,485,2"
+              }
+            ],
+            "majorCode": "120202",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "福建",
+        "cityName": "厦门市",
+        "enrollmentRate": "40.80",
+        "employmentRate": "91.10",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "050306",
+      "name": "网络与新媒体",
+      "displayName": "网络与新媒体",
+      "developmentPotential": "87",
+      "score": "0.87",
+      "opportunityScore": "86",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "22",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.13",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "南开大学",
+        "schoolNature": "public",
+        "rankDiffPer": 2018.0555555555557,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3997070,
+            "schoolMajorId": 1797608,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：汉语言文学、新闻学、网络与新媒体（出版与智能传播方向）、汉语国际教育）（八里台校区/津南校区）（专业大类内，专业任选））",
+            "planMajorName": "网络与新媒体",
+            "planNum": 9,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "616,432,9"
+              },
+              {
+                "2023": "611,503,5"
+              },
+              {
+                "2022": "622,416,7"
+              }
+            ],
+            "majorCode": "050306",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "天津",
+        "cityName": "南开区",
+        "enrollmentRate": "43.14",
+        "employmentRate": "95.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "西安交通大学",
+        "schoolNature": "public",
+        "rankDiffPer": 1134.817813765182,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4940669,
+            "schoolMajorId": 16679,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：网络与新媒体、网络与新媒体）（智能传播方向）",
+            "planMajorName": "网络与新媒体",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "609,741,2"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "050306",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9",
+        "belong": "教育部",
+        "provinceName": "陕西",
+        "cityName": "西安市",
+        "enrollmentRate": "60.40",
+        "employmentRate": "98.50",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "四川大学",
+        "schoolNature": "public",
+        "rankDiffPer": 778.1190019193857,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 3978942,
+            "schoolMajorId": 4273,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（中文与新闻传播）（含：汉语言文学、汉语国际教育、新闻学、广告学、网络与新媒体）（江安校区就读）（江安校区就读）",
+            "planMajorName": "网络与新媒体",
+            "planNum": 90,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "6000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "604,1042,80"
+              },
+              {
+                "2023": "599,1193,2"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "050306",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "四川",
+        "cityName": "成都市",
+        "enrollmentRate": "41.15",
+        "employmentRate": "89.45",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中国传媒大学",
+        "schoolNature": "public",
+        "rankDiffPer": 369.7125256673511,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4139516,
+            "schoolMajorId": 30536,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（智能融媒体运营方向））",
+            "planMajorName": "网络与新媒体",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "593,1948,2"
+              },
+              {
+                "2023": "592,1803,2"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "050306",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,部委院校,省部共建",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "朝阳区",
+        "enrollmentRate": "14.94",
+        "employmentRate": "90.23",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "中国海洋大学",
+        "schoolNature": "public",
+        "rankDiffPer": 345.68923526546513,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4072242,
+            "schoolMajorId": 1025935,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：新闻学、网络与新媒体））",
+            "planMajorName": "网络与新媒体",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5280",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "592,2053,2"
+              },
+              {
+                "2023": "587,2388,2"
+              },
+              {
+                "2022": "594,2428,2"
+              }
+            ],
+            "majorCode": "050306",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "山东",
+        "cityName": "青岛市",
+        "enrollmentRate": "25.10",
+        "employmentRate": "92.43",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "120801",
+      "name": "电子商务",
+      "displayName": "电子商务",
+      "developmentPotential": "87",
+      "score": "0.87",
+      "opportunityScore": "86",
+      "academicDevelopmentScore": "21",
+      "careerDevelopmentScore": "22",
+      "growthPotentialScore": "21",
+      "industryProspectsScore": "22",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.13",
+      "tiaozhanDeduction": "0.00"
+    },
+    "schools": [
+      {
+        "schoolName": "北京外国语大学",
+        "schoolNature": "public",
+        "rankDiffPer": 682.051282051282,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4135817,
+            "schoolMajorId": 1023701,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：工商管理、会计学、国际商务、电子商务）（数字化运营与创新）",
+            "planMajorName": "电子商务",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "602,1170,1"
+              },
+              {
+                "2023": "599,1193,1"
+              },
+              {
+                "2022": "612,873,2"
+              }
+            ],
+            "majorCode": "120801",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,研究生院,保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "30.34",
+        "employmentRate": "96.19",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "南京农业大学",
+        "schoolNature": "public",
+        "rankDiffPer": 108.95181548298697,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4063018,
+            "schoolMajorId": 5333,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：工商管理、市场营销、电子商务）",
+            "planMajorName": "电子商务",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5200",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "575,4379,1"
+              },
+              {
+                "2023": "576,4018,2"
+              },
+              {
+                "2022": "583,4076,3"
+              }
+            ],
+            "majorCode": "120801",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "211,双一流,101计划,研究生院(部),保研,国重点,省部共建",
+        "belong": "教育部",
+        "provinceName": "江苏",
+        "cityName": "南京市",
+        "enrollmentRate": "38.14",
+        "employmentRate": "88.73",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "湘潭大学",
+        "schoolNature": "public",
+        "rankDiffPer": 42.589995324918185,
+        "group": 1,
+        "historyScores": [
+          {
+            "id": 4190531,
+            "schoolMajorId": 19836,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "电子商务",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5500",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "565,6417,2"
+              },
+              {
+                "2023": "566,6020,3"
+              },
+              {
+                "2022": "577,5190,3"
+              }
+            ],
+            "majorCode": "120801",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "双一流,101计划,研究生院,保研,国重点,省部共建",
+        "belong": "省政府",
+        "provinceName": "湖南",
+        "cityName": "湘潭市",
+        "enrollmentRate": "0.00",
+        "employmentRate": "85.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "浙江师范大学",
+        "schoolNature": "public",
+        "rankDiffPer": 37.78045475079054,
+        "group": 1,
+        "historyScores": [
+          {
+            "id": 4158089,
+            "schoolMajorId": 622439,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：财务管理、电子商务、会计学、工商管理）（大一在杭州萧山校区,大二起在校本部就读）",
+            "planMajorName": "电子商务",
+            "planNum": 4,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5300",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "564,6641,5"
+              },
+              {
+                "2023": "568,5575,2"
+              },
+              {
+                "2022": "574,5842,4"
+              }
+            ],
+            "majorCode": "120801",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "研究生院,保研,省重点",
+        "belong": "省政府",
+        "provinceName": "浙江",
+        "cityName": "金华市",
+        "enrollmentRate": "24.13",
+        "employmentRate": "93.89",
+        "majorGroupId": null,
+        "majorGroupName": null
+      },
+      {
+        "schoolName": "湖南应用技术学院",
+        "schoolNature": "private",
+        "rankDiffPer": 0,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4345274,
+            "schoolMajorId": 69267,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "",
+            "planMajorName": "电子商务",
+            "planNum": 1,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "19800",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "-,-,-"
+              },
+              {
+                "2023": "-,-,-"
+              },
+              {
+                "2022": "-,-,-"
+              }
+            ],
+            "majorCode": "120801",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "",
+        "belong": "省教育厅",
+        "provinceName": "湖南",
+        "cityName": "常德市",
+        "enrollmentRate": "11.58",
+        "employmentRate": "90.12",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  },
+  {
+    "major": {
+      "code": "060106",
+      "name": "外国语言与外国历史",
+      "displayName": "外国语言与外国历史",
+      "developmentPotential": "74",
+      "score": "0.74",
+      "opportunityScore": "74",
+      "academicDevelopmentScore": "23",
+      "careerDevelopmentScore": "17",
+      "growthPotentialScore": "17",
+      "industryProspectsScore": "17",
+      "lexueScore": "0.50",
+      "shanxueScore": "0.50",
+      "yanxueDeduction": "0.13",
+      "tiaozhanDeduction": "0.13"
+    },
+    "schools": [
+      {
+        "schoolName": "北京大学",
+        "schoolNature": "public",
+        "rankDiffPer": 30400,
+        "group": 6,
+        "historyScores": [
+          {
+            "id": 4925117,
+            "schoolMajorId": 1026569,
+            "province": "四川",
+            "subjectType": "历史",
+            "batch": "本科批B段",
+            "remark": "（含：历史学（中国史）、世界史、外国语言与外国历史）",
+            "planMajorName": "外国语言与外国历史",
+            "planNum": 2,
+            "subjectSelection": "不限",
+            "studyPeriod": "4",
+            "tuition": "5000",
+            "year": 2025,
+            "createdAt": "2025-07-20T08:13:49.734Z",
+            "historyScore": [
+              {
+                "2024": "640,30,1"
+              },
+              {
+                "2023": "639,30,1"
+              },
+              {
+                "2022": "648,29,1"
+              }
+            ],
+            "majorCode": "060106",
+            "pattern": "历史_不限"
+          }
+        ],
+        "schoolFeature": "985,211,双一流,101计划,研究生院(部),保研,国重点,省部共建,C9,五院四系",
+        "belong": "教育部",
+        "provinceName": "北京",
+        "cityName": "海淀区",
+        "enrollmentRate": "54.11",
+        "employmentRate": "94.90",
+        "majorGroupId": null,
+        "majorGroupName": null
+      }
+    ]
+  }
+]
