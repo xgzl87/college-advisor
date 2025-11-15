@@ -61,14 +61,14 @@ export function TopNav() {
               <div className="relative w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden">
                 <Image
                   src="/logo.png"
-                  alt="逆袭智选志愿"
+                  alt="逆袭志愿"
                   fill
                   className="object-contain"
                   priority
                 />
               </div>
               <span className="text-lg font-bold text-[#1A4099] tracking-tight whitespace-nowrap">
-                逆袭智选志愿
+                逆袭志愿
               </span>
             </Link>
           </div>

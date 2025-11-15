@@ -5,6 +5,16 @@ import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { ChevronDown, Award, Building2, MapPin, GraduationCap, ArrowUp, Search, Trash2, ArrowDown, Plus } from "lucide-react"
 
 interface Major {
@@ -67,6 +77,8 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
   const [alternatives, setAlternatives] = useState<any[]>([])
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [expandedHistoryScores, setExpandedHistoryScores] = useState<Set<number>>(new Set())
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null)
 
   useEffect(() => {
     fetch("/data/intention.json")
@@ -241,12 +253,18 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
     setSelectedMajor(major)
   }
 
-  // 删除志愿项
-  const deleteWishlistItem = (index: number) => {
-    if (typeof window === "undefined") return
+  // 打开删除确认对话框
+  const handleDeleteClick = (index: number) => {
+    setItemToDelete(index)
+    setDeleteConfirmOpen(true)
+  }
+
+  // 确认删除志愿项
+  const confirmDeleteWishlistItem = () => {
+    if (typeof window === "undefined" || itemToDelete === null) return
     
     setWishlistItems((prevItems) => {
-      const newItems = prevItems.filter((_, i) => i !== index)
+      const newItems = prevItems.filter((_, i) => i !== itemToDelete)
       try {
         localStorage.setItem("wishlist-items", JSON.stringify(newItems))
       } catch (error) {
@@ -254,7 +272,7 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
       }
       // 同时更新 wishlist Set
       if (newItems.length < prevItems.length) {
-        const deletedItem = prevItems[index]
+        const deletedItem = prevItems[itemToDelete]
         if (deletedItem?.key) {
           setWishlist((prev) => {
             const newSet = new Set(prev)
@@ -270,6 +288,8 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
       }
       return newItems
     })
+    setDeleteConfirmOpen(false)
+    setItemToDelete(null)
   }
 
   // 上移志愿项
@@ -393,7 +413,7 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => deleteWishlistItem(idx)}
+                      onClick={() => handleDeleteClick(idx)}
                       className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600 text-muted-foreground"
                       title="删除"
                     >
@@ -685,6 +705,27 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要删除此志愿项吗？此操作无法撤销。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDeleteWishlistItem}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定删除
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

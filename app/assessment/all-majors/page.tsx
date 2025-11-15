@@ -109,6 +109,13 @@ function findFirstUnansweredIndex(questions: Question[], answers: Record<number,
   return index === -1 ? 0 : index
 }
 
+// 查找所有未答题的题目索引
+function findUnansweredQuestions(questions: Question[], answers: Record<number, number>): number[] {
+  return questions
+    .map((q, index) => (!(q.id in answers) ? index : -1))
+    .filter((index) => index !== -1)
+}
+
 export default function AllMajorsAssessmentPage() {
   const router = useRouter()
   const { toast } = useToast()
@@ -122,6 +129,9 @@ export default function AllMajorsAssessmentPage() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [progressAnimation, setProgressAnimation] = useState(false)
   const [showRestartConfirm, setShowRestartConfirm] = useState(false)
+  const [showUnansweredDialog, setShowUnansweredDialog] = useState(false)
+  const [showUnansweredBlink, setShowUnansweredBlink] = useState(false)
+  const [showClearDataConfirm, setShowClearDataConfirm] = useState(false)
 
   useEffect(() => {
     const storedAnswers = loadAnswersFromStorage()
@@ -140,6 +150,11 @@ export default function AllMajorsAssessmentPage() {
 
     setIsInitialized(true)
   }, [totalQuestions])
+
+  // 当题目切换时，清除闪烁状态
+  useEffect(() => {
+    setShowUnansweredBlink(false)
+  }, [currentIndex])
 
   const currentQuestion = sortedQuestions[currentIndex]
   const currentDimension = currentQuestion?.dimension || ""
@@ -207,6 +222,9 @@ export default function AllMajorsAssessmentPage() {
   const handleAnswer = (optionValue: number) => {
     if (!currentQuestion) return
 
+    // 清除闪烁状态
+    setShowUnansweredBlink(false)
+
     const newAnswers = {
       ...answers,
       [currentQuestion.id]: optionValue,
@@ -265,7 +283,78 @@ export default function AllMajorsAssessmentPage() {
 
   const handleJumpToDimension = (dimensionIndex: number) => {
     const startIndex = dimensionIndex * 24
+    setShowUnansweredBlink(false)
     setCurrentIndex(startIndex)
+  }
+
+  // 检查当前题目是否已回答
+  const isCurrentQuestionAnswered = currentQuestion ? currentQuestion.id in answers : false
+
+  // 获取所有未答题的题目索引
+  const unansweredIndices = findUnansweredQuestions(sortedQuestions, answers)
+
+  // 跳转到下一题（需要先答题）
+  const handleNextQuestion = () => {
+    if (!isCurrentQuestionAnswered) {
+      // 触发闪烁提示
+      setShowUnansweredBlink(true)
+      // 3秒后自动停止闪烁
+      setTimeout(() => {
+        setShowUnansweredBlink(false)
+      }, 3000)
+      
+      toast({
+        title: "请先回答当前题目",
+        description: "您需要先选择答案才能跳转到下一题",
+        duration: 2000,
+        className: "bg-white border-2 border-[#FF7F50] shadow-lg",
+      })
+      return
+    }
+
+    // 清除闪烁状态
+    setShowUnansweredBlink(false)
+
+    if (currentIndex < totalQuestions - 1) {
+      setCurrentIndex((prev) => prev + 1)
+    }
+  }
+
+  // 跳转到第一个未答题的题目
+  const handleJumpToFirstUnanswered = () => {
+    if (unansweredIndices.length === 0) {
+      toast({
+        title: "所有题目已完成",
+        description: "恭喜您，所有题目都已回答完毕！",
+        duration: 2000,
+        className: "bg-white border-2 border-[#FF7F50] shadow-lg",
+      })
+      return
+    }
+
+    const firstUnansweredIndex = unansweredIndices[0]
+    setShowUnansweredBlink(false)
+    setCurrentIndex(firstUnansweredIndex)
+    setShowUnansweredDialog(false)
+    toast({
+      title: "已跳转到漏答题",
+      description: `第 ${firstUnansweredIndex + 1} 题`,
+      duration: 2000,
+      className: "bg-white border-2 border-[#FF7F50] shadow-lg",
+    })
+  }
+
+  // 跳转到指定的未答题题目
+  const handleJumpToUnanswered = (index: number) => {
+    setShowUnansweredBlink(false)
+    setCurrentIndex(index)
+    setShowUnansweredDialog(false)
+    toast({
+      title: "已跳转",
+      description: `第 ${index + 1} 题`,
+      duration: 1500,
+      className: "bg-white border-2 border-[#FF7F50] shadow-lg",
+    })
   }
 
   if (isCompleted) {
@@ -350,6 +439,47 @@ export default function AllMajorsAssessmentPage() {
     <div className="min-h-screen flex flex-col bg-[#F5F5F5]">
       <Toaster />
       <TopNav />
+      {/* 闪烁动画样式 */}
+      <style jsx global>{`
+        @keyframes blink-unanswered {
+          0%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 0 0 rgba(255, 127, 80, 0.7);
+          }
+          50% {
+            opacity: 0.85;
+            box-shadow: 0 0 0 10px rgba(255, 127, 80, 0);
+          }
+        }
+        .blink-unanswered {
+          animation: blink-unanswered 1.5s ease-in-out infinite;
+          border: 2px solid #FF7F50 !important;
+        }
+        @keyframes progress-blink {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.4;
+          }
+        }
+        .blink-progress {
+          animation: progress-blink 1.5s ease-in-out infinite;
+        }
+        @keyframes button-blink {
+          0%, 100% {
+            background-color: rgba(255, 127, 80, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+          }
+          50% {
+            background-color: rgba(255, 127, 80, 0.4);
+            color: rgba(255, 255, 255, 1);
+          }
+        }
+        .blink-button {
+          animation: button-blink 1.2s ease-in-out infinite;
+        }
+      `}</style>
 
       <div className="fixed top-14 left-0 right-0 bg-[#1A4099] text-white px-4 py-3 z-50 shadow-lg">
         <div className="flex items-center justify-between mb-2">
@@ -360,12 +490,7 @@ export default function AllMajorsAssessmentPage() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => {
-              if (confirm("确定要清除所有答题数据吗？此操作不可恢复。")) {
-                localStorage.removeItem(STORAGE_KEY)
-                window.location.reload()
-              }
-            }}
+            onClick={() => setShowClearDataConfirm(true)}
             className="text-white/70 hover:text-white hover:bg-white/20 h-8 px-2 text-xs"
             title="清除答题数据"
           >
@@ -375,52 +500,78 @@ export default function AllMajorsAssessmentPage() {
 
         <div className="space-y-1">
           <div className="flex gap-0.5 h-2 rounded-full overflow-hidden bg-white/20">
-            {dimensionProgress.map((dim, index) => (
-              <div
-                key={dim.dimension}
-                onClick={() => handleJumpToDimension(index)}
-                className={`flex-1 relative transition-all cursor-pointer hover:opacity-80 ${progressAnimation && dim.progress > 0 ? "animate-pulse" : ""}`}
-                style={{
-                  backgroundColor: `rgba(255, 127, 80, 0.2)`, // Unified background color
-                }}
-                title={`跳转到${dim.dimension}维度`}
-              >
+            {dimensionProgress.map((dim, index) => {
+              // 检查该维度是否有未答题的题目
+              const dimQuestions = sortedQuestions.filter((q) => q.dimension === dim.dimension)
+              const dimUnanswered = dimQuestions.some((q) => !(q.id in answers))
+              const hasUnanswered = dimUnanswered && dim.progress < 100
+              
+              return (
                 <div
-                  className="h-full transition-all duration-500"
+                  key={dim.dimension}
+                  onClick={() => handleJumpToDimension(index)}
+                  className={`flex-1 relative transition-all cursor-pointer hover:opacity-80 ${progressAnimation && dim.progress > 0 ? "animate-pulse" : ""} ${hasUnanswered ? "blink-progress" : ""}`}
                   style={{
-                    width: `${dim.progress}%`,
-                    backgroundColor: unifiedProgressColor, // Unified progress color
+                    backgroundColor: `rgba(255, 127, 80, 0.2)`, // Unified background color
                   }}
-                />
-              </div>
-            ))}
+                  title={`跳转到${dim.dimension}维度${hasUnanswered ? '（有未答题）' : ''}`}
+                >
+                  <div
+                    className="h-full transition-all duration-500"
+                    style={{
+                      width: `${dim.progress}%`,
+                      backgroundColor: unifiedProgressColor, // Unified progress color
+                    }}
+                  />
+                </div>
+              )
+            })}
           </div>
 
           <div className="flex justify-between text-xs text-white/70 px-0.5">
-            {DIMENSION_ORDER.map((dim, index) => (
-              <div
-                key={dim}
-                onClick={() => handleJumpToDimension(index)}
-                className="flex-1 text-center cursor-pointer hover:opacity-80 transition-opacity font-bold"
-                style={{
-                  color: dimensionProgress[index].progress > 0 ? unifiedProgressColor : "rgba(255,255,255,0.5)", // Unified label color
-                }}
-                title={`跳转到${dim}维度`}
-              >
-                {dim}
-              </div>
-            ))}
+            {DIMENSION_ORDER.map((dim, index) => {
+              // 检查该维度是否有未答题的题目
+              const dimQuestions = sortedQuestions.filter((q) => q.dimension === dim)
+              const dimUnanswered = dimQuestions.some((q) => !(q.id in answers))
+              const hasUnanswered = dimUnanswered && dimensionProgress[index].progress < 100
+              
+              return (
+                <div
+                  key={dim}
+                  onClick={() => handleJumpToDimension(index)}
+                  className={`flex-1 text-center cursor-pointer hover:opacity-80 transition-opacity font-bold ${hasUnanswered ? "blink-progress" : ""}`}
+                  style={{
+                    color: dimensionProgress[index].progress > 0 ? unifiedProgressColor : "rgba(255,255,255,0.5)", // Unified label color
+                  }}
+                  title={`跳转到${dim}维度${hasUnanswered ? '（有未答题）' : ''}`}
+                >
+                  {dim}
+                </div>
+              )
+            })}
           </div>
         </div>
 
-        <div className="text-xs text-white/80 mt-2 text-center">
-          当前：{currentDimension} 维度 {answeredInCurrentDimension}/{totalInCurrentDimension}
+        <div className="flex items-center justify-between mt-2">
+          <div className="text-xs text-white/80">
+            当前：{currentDimension} 维度 {answeredInCurrentDimension}/{totalInCurrentDimension}
+          </div>
+          {unansweredIndices.length > 0 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowUnansweredDialog(true)}
+              className="text-xs h-6 px-2 text-white/90 hover:text-white hover:bg-white/20 blink-button"
+            >
+              漏答 {unansweredIndices.length} 题
+            </Button>
+          )}
         </div>
       </div>
 
       <div className="flex-1 px-4 pt-40 pb-32 overflow-y-auto">
         <div className="max-w-2xl mx-auto">
-          <Card className="p-6 shadow-lg mb-4">
+          <Card className={`p-6 shadow-lg mb-4 ${showUnansweredBlink && !isCurrentQuestionAnswered ? 'blink-unanswered' : ''}`}>
             <div className="mb-6">
               <div className="inline-block px-3 py-1 rounded-full bg-[#1A4099]/10 text-[#1A4099] text-xs font-medium mb-3">
                 {currentQuestion.dimension} · {currentQuestion.type === "like" ? "喜欢" : "天赋"}
@@ -486,7 +637,10 @@ export default function AllMajorsAssessmentPage() {
           ) : (
             <>
               <Button
-                onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
+                onClick={() => {
+                  setShowUnansweredBlink(false)
+                  setCurrentIndex((prev) => Math.max(0, prev - 1))
+                }}
                 disabled={currentIndex === 0}
                 variant="outline"
                 className="flex-1 h-12 bg-transparent"
@@ -495,9 +649,9 @@ export default function AllMajorsAssessmentPage() {
                 上一题
               </Button>
               <Button
-                onClick={() => setCurrentIndex((prev) => prev + 1)}
+                onClick={handleNextQuestion}
                 disabled={currentIndex === totalQuestions - 1}
-                className="flex-1 h-12 bg-[#FF7F50] hover:bg-[#FF6A3D] text-white"
+                className="flex-1 h-12 bg-[#FF7F50] hover:bg-[#FF6A3D] text-white disabled:opacity-50"
               >
                 下一题
                 <ChevronRight className="w-4 h-4 ml-1" />
@@ -523,6 +677,80 @@ export default function AllMajorsAssessmentPage() {
               className="bg-[#FF7F50] hover:bg-[#FF6A3D] text-white"
             >
               确定
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* 漏答题提示对话框 */}
+      <AlertDialog open={showUnansweredDialog} onOpenChange={setShowUnansweredDialog}>
+        <AlertDialogContent className="max-w-md max-h-[80vh] overflow-hidden flex flex-col">
+          <AlertDialogHeader>
+            <AlertDialogTitle>漏答题提示</AlertDialogTitle>
+            <AlertDialogDescription>
+              检测到 {unansweredIndices.length} 道题目未回答，请完成所有题目后再提交。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="flex-1 overflow-y-auto py-4">
+            {unansweredIndices.length > 0 ? (
+              <div className="space-y-2">
+                <Button
+                  onClick={handleJumpToFirstUnanswered}
+                  className="w-full bg-[#FF7F50] hover:bg-[#FF6A3D] text-white"
+                >
+                  跳转到第一道漏答题（第 {unansweredIndices[0] + 1} 题）
+                </Button>
+                <div className="text-sm text-muted-foreground mb-2">所有漏答题列表：</div>
+                <div className="grid grid-cols-4 gap-2 max-h-60 overflow-y-auto">
+                  {unansweredIndices.map((index) => {
+                    const question = sortedQuestions[index]
+                    return (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleJumpToUnanswered(index)}
+                        className="h-10 text-xs"
+                      >
+                        第 {index + 1} 题
+                        <br />
+                        <span className="text-[10px] opacity-70">{question.dimension}</span>
+                      </Button>
+                    )
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center text-muted-foreground py-4">
+                所有题目已完成！
+              </div>
+            )}
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel>关闭</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* 清除数据确认对话框 */}
+      <AlertDialog open={showClearDataConfirm} onOpenChange={setShowClearDataConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认清除数据</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要清除所有答题数据吗？此操作不可恢复，所有已保存的答案将被永久删除。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                localStorage.removeItem(STORAGE_KEY)
+                window.location.reload()
+              }}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定清除
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

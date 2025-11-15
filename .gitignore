@@ -3,6 +3,7 @@
 node_modules/
 
 # 其他常见的需要忽略的文件
+.next/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

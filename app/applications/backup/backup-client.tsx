@@ -3,6 +3,16 @@
 import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { ChevronDown, ChevronUp, TrendingUp, TrendingDown, Info, Heart, Check, Trash2 } from "lucide-react"
 
 interface AlternativeItem {
@@ -40,6 +50,8 @@ export default function BackupApplicationsClient() {
   const [expandedMoreInfo, setExpandedMoreInfo] = useState<Set<number>>(new Set())
   const [error, setError] = useState<string>("")
   const [careerExplorationCompleted, setCareerExplorationCompleted] = useState(false)
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null)
 
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -104,16 +116,25 @@ export default function BackupApplicationsClient() {
     })
   }
 
-  const handleDelete = (id: number) => {
-    if (!data) return
+  // 打开删除确认对话框
+  const handleDeleteClick = (id: number) => {
+    setItemToDelete(id)
+    setDeleteConfirmOpen(true)
+  }
 
-    const updatedAlternatives = data.alternatives.filter((item) => item.id !== id)
+  // 确认删除备选志愿
+  const confirmDelete = () => {
+    if (!data || itemToDelete === null) return
+
+    const updatedAlternatives = data.alternatives.filter((item) => item.id !== itemToDelete)
 
     setData({
       ...data,
       alternatives: updatedAlternatives,
       total: updatedAlternatives.length,
     })
+    setDeleteConfirmOpen(false)
+    setItemToDelete(null)
   }
 
   if (error) {
@@ -254,7 +275,7 @@ export default function BackupApplicationsClient() {
                         <Button
                           size="sm"
                           variant="destructive"
-                          onClick={() => handleDelete(item.id)}
+                          onClick={() => handleDeleteClick(item.id)}
                           className="h-7 text-xs"
                         >
                           <Trash2 className="w-3 h-3 mr-1" />
@@ -329,6 +350,27 @@ export default function BackupApplicationsClient() {
           )}
         </div>
       </div>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要删除此备选志愿吗？此操作无法撤销。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定删除
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

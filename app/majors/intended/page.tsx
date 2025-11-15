@@ -352,15 +352,51 @@ function IntendedMajorsContent() {
 
       {/* 分数区间筛选条 - 仅在专业赛道tab显示 */}
       {isProfessionalTrack && (
-        <div className="bg-white border-b border-gray-200 px-4 py-2">
+        <div className="bg-white border-b border-gray-200 px-4 py-3">
           <div className="max-w-lg mx-auto">
+            {/* 提示文字 */}
+            <div className="flex items-center gap-1.5 mb-3 px-2">
+              <div className="flex-1">
+                <p className="text-xs text-gray-600 font-medium">
+                  💡 滑动滑块可查看不同分数区间的院校
+                </p>
+              </div>
+            </div>
             {/* 双滑块 - 区间筛选 */}
             <div 
-              className="px-2 pb-1 relative"
+              className="px-2 pt-3 pb-1 relative"
               onPointerDown={handleSliderPointerDown}
               onPointerUp={handleSliderPointerUp}
               onPointerLeave={handleSliderPointerUp}
             >
+              {/* 自定义滑块样式 */}
+              <style jsx>{`
+                :global([data-slot="slider-track"]) {
+                  background-color: #e5e7eb !important;
+                  height: 6px !important;
+                  border: 1px solid #d1d5db;
+                }
+                :global([data-slot="slider-range"]) {
+                  background: linear-gradient(to right, #1A4099, #2563eb) !important;
+                  height: 6px !important;
+                }
+                :global([data-slot="slider-thumb"]) {
+                  width: 20px !important;
+                  height: 20px !important;
+                  background: #1A4099 !important;
+                  border: 3px solid #ffffff !important;
+                  box-shadow: 0 2px 8px rgba(26, 64, 153, 0.4), 0 0 0 2px rgba(26, 64, 153, 0.1) !important;
+                  cursor: grab !important;
+                }
+                :global([data-slot="slider-thumb"]:hover) {
+                  transform: scale(1.15) !important;
+                  box-shadow: 0 4px 12px rgba(26, 64, 153, 0.6), 0 0 0 3px rgba(26, 64, 153, 0.15) !important;
+                }
+                :global([data-slot="slider-thumb"]:active) {
+                  cursor: grabbing !important;
+                  transform: scale(1.1) !important;
+                }
+              `}</style>
               <Slider
                 value={scoreRange}
                 onValueChange={handleScoreRangeChange}
@@ -369,20 +405,29 @@ function IntendedMajorsContent() {
                 step={1}
                 className="w-full"
               />
-              {/* 当前分数显示在滑块轴上，根据当前分数位置定位 */}
+              {/* 当前分数显示在滑块轴上方，根据当前分数位置定位 */}
               <div 
-                className="absolute top-1/2 -translate-y-1/2 pointer-events-none z-10"
+                className="absolute -top-8 pointer-events-none z-10 flex flex-col items-center"
                 style={{
-                  left: `calc(${(currentScore / 750) * 100}% - 12px)`,
+                  left: `${(currentScore / 750) * 100}%`,
+                  transform: 'translateX(-50%)',
                 }}
               >
-                <div className="bg-[#1A4099] text-white px-1.5 py-0.5 rounded text-[10px] font-bold whitespace-nowrap shadow-sm">
-                  {currentScore}
+                {/* 标签文字 */}
+                <div className="bg-[#1A4099] text-white px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap shadow-md border border-white/20 mb-1">
+                  您的分数: {currentScore}
                 </div>
+                {/* 向下箭头 */}
+                <div 
+                  className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-[#1A4099]"
+                  style={{
+                    filter: 'drop-shadow(0 2px 2px rgba(0,0,0,0.1))'
+                  }}
+                ></div>
               </div>
             </div>
             {/* 区间显示和左右标签 */}
-            <div className="flex justify-between items-center text-[10px] mt-1 px-2">
+            <div className="flex justify-between items-center text-[10px] mt-2 px-2">
               <div className="flex items-center gap-1">
                 <span className="text-muted-foreground">最低:</span>
                 <span className="font-semibold text-[#1A4099]">{scoreRange[0]}</span>

@@ -4,6 +4,16 @@ import { useState, useEffect, useMemo } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { MapPin, CheckCircle2, X } from "lucide-react"
 
 interface Province {
@@ -27,6 +37,8 @@ export default function ProvincesClient() {
   const [selectedProvince, setSelectedProvince] = useState<Province | null>(null)
   const [showDetail, setShowDetail] = useState(false)
   const [selectedType, setSelectedType] = useState<string>("全部")
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
+  const [provinceToDelete, setProvinceToDelete] = useState<string | null>(null)
 
   useEffect(() => {
     fetch("/data/province.json")
@@ -72,13 +84,24 @@ export default function ProvincesClient() {
     })
   }
 
-  const removeProvince = (provinceName: string) => {
-    setSelectedProvinces((prev) => {
-      const newSet = new Set(prev)
-      newSet.delete(provinceName)
-      localStorage.setItem("selectedProvinces", JSON.stringify(Array.from(newSet)))
-      return newSet
-    })
+  // 打开删除确认对话框
+  const handleDeleteClick = (provinceName: string) => {
+    setProvinceToDelete(provinceName)
+    setDeleteConfirmOpen(true)
+  }
+
+  // 确认删除省份
+  const confirmDeleteProvince = () => {
+    if (provinceToDelete) {
+      setSelectedProvinces((prev) => {
+        const newSet = new Set(prev)
+        newSet.delete(provinceToDelete)
+        localStorage.setItem("selectedProvinces", JSON.stringify(Array.from(newSet)))
+        return newSet
+      })
+    }
+    setDeleteConfirmOpen(false)
+    setProvinceToDelete(null)
   }
 
   const openDetail = (province: Province) => {
@@ -152,7 +175,7 @@ export default function ProvincesClient() {
                 >
                   <span className="text-sm font-medium text-[#1A4099]">{provinceName}</span>
                   <button
-                    onClick={() => removeProvince(provinceName)}
+                    onClick={() => handleDeleteClick(provinceName)}
                     className="text-[#1A4099] hover:text-[#1A4099]/70 transition-colors"
                   >
                     <X className="w-4 h-4" />
@@ -285,6 +308,27 @@ export default function ProvincesClient() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要从已选择列表中删除此省份吗？此操作无法撤销。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDeleteProvince}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定删除
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

@@ -4,6 +4,16 @@ import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { Search, Star, ChevronDown, ChevronUp, Loader2, Trash2, Eye, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -33,6 +43,8 @@ export default function FavoriteMajorsClient() {
   const [allMajorsData, setAllMajorsData] = useState<UserScoreData | null>(null)
   const [expandedBriefs, setExpandedBriefs] = useState<Set<string>>(new Set())
   const [completedExplorations, setCompletedExplorations] = useState<Set<string>>(new Set())
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
+  const [majorToDelete, setMajorToDelete] = useState<string | null>(null)
 
   // 从 localStorage 读取心动专业列表
   useEffect(() => {
@@ -87,17 +99,26 @@ export default function FavoriteMajorsClient() {
     }
   }, [])
 
-  // 移除心动专业
-  const removeFavorite = (majorCode: string, event: React.MouseEvent) => {
+  // 打开删除确认对话框
+  const handleDeleteClick = (majorCode: string, event: React.MouseEvent) => {
     event.preventDefault()
     event.stopPropagation()
-    
-    setIntendedMajors((prev) => {
-      const newSet = new Set(prev)
-      newSet.delete(majorCode)
-      localStorage.setItem("intendedMajors", JSON.stringify(Array.from(newSet)))
-      return newSet
-    })
+    setMajorToDelete(majorCode)
+    setDeleteConfirmOpen(true)
+  }
+
+  // 确认删除心动专业
+  const confirmDelete = () => {
+    if (majorToDelete) {
+      setIntendedMajors((prev) => {
+        const newSet = new Set(prev)
+        newSet.delete(majorToDelete)
+        localStorage.setItem("intendedMajors", JSON.stringify(Array.from(newSet)))
+        return newSet
+      })
+    }
+    setDeleteConfirmOpen(false)
+    setMajorToDelete(null)
   }
 
   const toggleBrief = (majorCode: string, event: React.MouseEvent) => {
@@ -265,7 +286,7 @@ export default function FavoriteMajorsClient() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={(e) => removeFavorite(major.majorCode, e)}
+                      onClick={(e) => handleDeleteClick(major.majorCode, e)}
                       className="flex-1 text-red-600 border-red-300 hover:bg-red-50 hover:border-red-400"
                     >
                       <Trash2 className="w-4 h-4 mr-1" />
@@ -295,6 +316,27 @@ export default function FavoriteMajorsClient() {
         )}
         </div>
       </div>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要从心动专业列表中删除此专业吗？此操作无法撤销。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定删除
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }
