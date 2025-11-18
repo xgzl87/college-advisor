@@ -1,11 +1,21 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 import { TopNav } from "@/components/top-nav"
 import {
@@ -705,12 +715,15 @@ function MajorElementAnalysesDisplay({ analyses }: { analyses: any[] }) {
 
 export default function CareerExplorationClient() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const majorCode = searchParams.get("code") || fixedMajorData.code
   const majorData = fixedMajorData
   const [activeTab, setActiveTab] = useState("passion")
   const [majorDetailData, setMajorDetailData] = useState<any | null>(null)
   const [isLoadingMajorData, setIsLoadingMajorData] = useState(false)
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [showQuestionnaire, setShowQuestionnaire] = useState(false)
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
   // 加载固定的 010101.json 数据
   useEffect(() => {
@@ -735,7 +748,25 @@ export default function CareerExplorationClient() {
   }, [])
 
   const handleNotSuitable = () => {
-    // 处理"该专业不适合"的逻辑
+    // 打开确认删除对话框
+    setShowDeleteConfirm(true)
+  }
+
+  const confirmDeleteFromFavorites = () => {
+    // 从心动专业列表中删除该专业
+    if (typeof window !== "undefined") {
+      try {
+        const stored = localStorage.getItem("intendedMajors")
+        if (stored) {
+          const intendedMajors = new Set(JSON.parse(stored))
+          intendedMajors.delete(majorCode)
+          localStorage.setItem("intendedMajors", JSON.stringify(Array.from(intendedMajors)))
+        }
+      } catch (error) {
+        console.error("Error removing from favorites:", error)
+      }
+    }
+    setShowDeleteConfirm(false)
     router.back()
   }
 
@@ -1003,6 +1034,27 @@ export default function CareerExplorationClient() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogDescription>
+              确定要从心动专业列表中删除此专业吗？此操作无法撤销。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDeleteFromFavorites}
+              className="bg-red-600 hover:bg-red-700 text-white"
+            >
+              确定删除
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

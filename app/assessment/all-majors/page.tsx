@@ -485,7 +485,7 @@ export default function AllMajorsAssessmentPage() {
         <div className="flex items-center justify-between mb-2">
           <div className="w-8"></div>
           <div className={`text-sm font-medium transition-all ${progressAnimation ? "scale-110 text-[#FF7F50]" : ""}`}>
-            第 {currentIndex + 1} 题 / {totalQuestions}
+            第 {currentIndex + 1} / {totalQuestions}题
           </div>
           <Button
             variant="ghost"

@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 import { Sparkles, CheckCircle2, XCircle, Brain, Users, Target, BookOpen, Lightbulb, ChevronDown, Crown, Rocket, Zap, Compass } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Dot } from "recharts"
 
 // 数据接口定义
 interface Portrait {
@@ -84,6 +85,114 @@ function getPortraitIcon(category: PortraitCategory) {
     default:
       return <Sparkles className="w-5 h-5 text-[#1A4099]" />
   }
+}
+
+// 维度图表组件 - 使用 Recharts
+function DimensionChart({ 
+  elements, 
+  onDimensionClick 
+}: { 
+  elements: Element[]
+  onDimensionClick: (dimension: string) => void
+}) {
+  const [hoveredDimension, setHoveredDimension] = useState<string | null>(null)
+
+  // 获取所有唯一的维度，按照固定顺序：看听说记想做运动
+  const dimensions = useMemo(() => {
+    const uniqueDimensions = Array.from(new Set(elements.map(e => e.dimension)))
+    const fixedOrder = ['看', '听', '说', '记', '想', '做', '运动']
+    // 按照固定顺序排序，如果维度不在固定顺序中，则放在最后
+    return fixedOrder.filter(dim => uniqueDimensions.includes(dim))
+      .concat(uniqueDimensions.filter(dim => !fixedOrder.includes(dim)))
+  }, [elements])
+
+  // 为所有维度生成折线图数据
+  const chartData = useMemo(() => {
+    return dimensions.map((dimension, index) => {
+      const dimensionElements = elements.filter(e => e.dimension === dimension)
+      // y轴随机值（用于展示）
+      const value = Math.floor(Math.random() * 70) + 15
+      return {
+        dimension,
+        value,
+        elements: dimensionElements
+      }
+    })
+  }, [dimensions, elements])
+
+  // 自定义数据点
+  const CustomDot = (props: any) => {
+    const { cx, cy, payload } = props
+    const isHovered = hoveredDimension === payload.dimension
+    const color = isHovered ? '#FF7F50' : '#1A4099'
+    
+    return (
+      <g>
+        <circle
+          cx={cx}
+          cy={cy}
+          r={isHovered ? 5 : 4}
+          fill={color}
+          stroke="white"
+          strokeWidth={2}
+          className="cursor-pointer transition-all duration-200"
+          onClick={() => onDimensionClick(payload.dimension)}
+          onMouseEnter={() => setHoveredDimension(payload.dimension)}
+          onMouseLeave={() => setHoveredDimension(null)}
+        />
+        <text
+          x={cx}
+          y={cy - 10}
+          textAnchor="middle"
+          fill={color}
+          fontSize={14}
+          fontWeight="bold"
+          className="pointer-events-none select-none"
+          style={{
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+            textShadow: '0 0 3px rgba(255, 255, 255, 0.9)'
+          }}
+        >
+          {payload.dimension}
+        </text>
+      </g>
+    )
+  }
+
+  return (
+    <Card className="p-0 bg-white border border-[#1A4099]/20 shadow-sm mb-2 mx-2">
+      <div className="w-full" style={{ height: '120px' }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            data={chartData}
+            margin={{ top: 25, right: 15, left: 15, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="0" stroke="#E5E7EB" vertical={false} />
+            <XAxis 
+              dataKey="dimension" 
+              hide={true}
+            />
+            <YAxis 
+              hide={true}
+              domain={[0, 100]}
+            />
+            <Tooltip 
+              content={() => null}
+              cursor={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#1A4099"
+              strokeWidth={2}
+              dot={<CustomDot />}
+              activeDot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </Card>
+  )
 }
 
 // Portrait 卡片组件
@@ -333,6 +442,8 @@ export function PersonalProfileClient() {
   const [elements, setElements] = useState<Element[]>([])
   const [mechanisms, setMechanisms] = useState<Mechanism[]>([])
   const [loading, setLoading] = useState(true)
+  const [activeTab, setActiveTab] = useState<string>("热爱高潜能")
+  const [selectedDimension, setSelectedDimension] = useState<string | null>(null)
 
   // 将 portraits 按分类分组
   const portraitsByCategory = {
@@ -402,10 +513,18 @@ export function PersonalProfileClient() {
         />
       </div>
 
-      <div className="px-2 -mt-8 pb-1 relative z-10">
+      <div className="-mt-8 pb-1 relative z-10">
+        {/* 维度图表 - 撑满整个宽度 */}
+        <DimensionChart 
+          elements={elements}
+          onDimensionClick={(dimension) => {
+            setSelectedDimension(dimension)
+          }}
+        />
+
         {/* Portrait Tabs */}
         <Card className="p-2 bg-white border-2 border-[#1A4099]/20 shadow-lg mb-1">
-          <Tabs defaultValue="热爱高潜能" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-1">
               <TabsTrigger value="热爱高潜能">热爱高潜能</TabsTrigger>
               <TabsTrigger value="兴趣驱动型">兴趣驱动型</TabsTrigger>

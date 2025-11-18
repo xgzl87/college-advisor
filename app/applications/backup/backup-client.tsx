@@ -49,7 +49,6 @@ export default function BackupApplicationsClient() {
   const [data, setData] = useState<AlternativesData | null>(null)
   const [expandedMoreInfo, setExpandedMoreInfo] = useState<Set<number>>(new Set())
   const [error, setError] = useState<string>("")
-  const [careerExplorationCompleted, setCareerExplorationCompleted] = useState(false)
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
 
@@ -91,8 +90,6 @@ export default function BackupApplicationsClient() {
   }, [])
 
   useEffect(() => {
-    const careerCompleted = localStorage.getItem("careerExplorationCompleted")
-    setCareerExplorationCompleted(careerCompleted === "true")
   }, [])
 
   const toggleMoreInfo = (id: number) => {
@@ -205,16 +202,6 @@ export default function BackupApplicationsClient() {
                             <span className="text-muted-foreground">热爱能量</span>
                             <span className="font-semibold text-blue-600">{item.score}</span>
                           </div>
-                          <div className="flex items-center gap-1 text-xs pl-4">
-                            <span className="text-muted-foreground">职业探索:</span>
-                            <span
-                              className={`text-xs px-1.5 py-0.5 rounded ${
-                                careerExplorationCompleted ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
-                              }`}
-                            >
-                              {careerExplorationCompleted ? "已完成" : "未完成"}
-                            </span>
-                          </div>
                         </div>
                       </div>
 
@@ -313,7 +300,7 @@ export default function BackupApplicationsClient() {
                       )}
                       {item.enrollmentRate > 0 && (
                         <div className="flex gap-2">
-                          <span className="text-muted-foreground min-w-16">录取率:</span>
+                          <span className="text-muted-foreground min-w-16">升学率:</span>
                           <span>{item.enrollmentRate}%</span>
                         </div>
                       )}

@@ -332,13 +332,37 @@ function IntendedMajorsContent() {
                 <p className="text-white/90 text-xs mt-1">{pageDescription}</p>
               </div>
             </div>
-            <button
-              onClick={() => setShowExamInfoDialog(true)}
-              className="flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-medium transition-colors flex-shrink-0"
-            >
-              <FileText className="w-4 h-4" />
-              高考信息
-            </button>
+            <div className="flex items-center gap-2">
+              {activeTab !== "意向志愿" && (
+                <button
+                  onClick={() => setShowExamInfoDialog(true)}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-medium transition-colors flex-shrink-0"
+                >
+                  <FileText className="w-4 h-4" />
+                  高考信息
+                </button>
+              )}
+              {activeTab === "意向志愿" ? (
+                <button
+                  onClick={() => {
+                    // TODO: 实现导出志愿功能
+                    console.log("导出志愿")
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-medium transition-colors flex-shrink-0"
+                >
+                  <FileText className="w-4 h-4" />
+                  导出志愿
+                </button>
+              ) : (
+                <Link
+                  href="/assessment/provinces"
+                  className="flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-medium transition-colors flex-shrink-0"
+                >
+                  <MapPin className="w-4 h-4" />
+                  意向省份
+                </Link>
+              )}
+            </div>
           </div>
         </div>
         {/* Wave effect at bottom */}

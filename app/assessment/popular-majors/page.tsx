@@ -250,17 +250,13 @@ export default function PopularMajorsPage() {
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-semibold mb-1">{major.name}</h3>
                       <div className="flex flex-wrap gap-2 text-xs text-muted-foreground mb-1">
-                        {major.degree && <span>{major.degree}</span>}
-                        {major.limit_year && <span>{major.limit_year}</span>}
+                        {major.degree && <span className="font-semibold">{major.degree}</span>}
+                        {major.limit_year && <span className="font-semibold">{major.limit_year}</span>}
+                        {major.fivesalaryavg > 0 && <span className="font-semibold">毕业5年薪资: ¥{major.fivesalaryavg}</span>}
                       </div>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                        {major.fivesalaryavg > 0 && <span>毕业5年薪资: ¥{major.fivesalaryavg}</span>}
-                        {major.boy_rate && major.girl_rate && (
-                          <span>
-                            男女比: {major.boy_rate}:{major.girl_rate}
-                          </span>
-                        )}
-                      </div>
+                      <p className="text-xs text-muted-foreground mb-1">
+                        该专业致力于培养具备扎实理论基础和实践能力的专业人才，为学生提供全面的学科知识和职业发展指导。
+                      </p>
                     </div>
                     <div className="flex-shrink-0 flex flex-col gap-2 items-end">
                       {/* 显示测评结果 */}

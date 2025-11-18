@@ -53,7 +53,6 @@ export default function RecommendedClient() {
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set())
   const [expandedMoreInfo, setExpandedMoreInfo] = useState<Set<string>>(new Set())
   const [error, setError] = useState<string>("")
-  const [careerExplorationCompleted, setCareerExplorationCompleted] = useState(false)
   const [applicationCounts, setApplicationCounts] = useState<Record<string, number>>({})
 
   useEffect(() => {
@@ -100,8 +99,6 @@ export default function RecommendedClient() {
   }, [])
 
   useEffect(() => {
-    const careerCompleted = localStorage.getItem("careerExplorationCompleted")
-    setCareerExplorationCompleted(careerCompleted === "true")
   }, [])
 
   const toggleGroup = (groupId: string) => {
@@ -225,18 +222,6 @@ export default function RecommendedClient() {
                                       {item.major.developmentPotential}
                                     </span>
                                   </div>
-                                  <div className="flex items-center gap-1 text-xs pl-4">
-                                    <span className="text-muted-foreground">职业探索:</span>
-                                    <span
-                                      className={`text-xs px-1.5 py-0.5 rounded ${
-                                        careerExplorationCompleted
-                                          ? "bg-green-100 text-green-700"
-                                          : "bg-gray-100 text-gray-600"
-                                      }`}
-                                    >
-                                      {careerExplorationCompleted ? "已完成" : "未完成"}
-                                    </span>
-                                  </div>
                                 </div>
                               </div>
 
@@ -328,7 +313,7 @@ export default function RecommendedClient() {
                               )}
                               {item.enrollmentRate && (
                                 <div className="flex gap-2">
-                                  <span className="text-muted-foreground min-w-16">录取率:</span>
+                                  <span className="text-muted-foreground min-w-16">升学率:</span>
                                   <span>{item.enrollmentRate}%</span>
                                 </div>
                               )}

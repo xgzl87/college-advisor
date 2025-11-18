@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -40,6 +39,8 @@ interface HistoryScore {
   historyScore: Array<{ [key: string]: string }>
   remark: string
   planNum: number
+  batch?: string
+  majorGroupName?: string | null
 }
 
 interface School {
@@ -54,6 +55,7 @@ interface School {
   cityName: string
   enrollmentRate: string
   employmentRate: string
+  majorGroupName?: string | null
 }
 
 interface IntentionMajor {
@@ -68,10 +70,8 @@ interface IntendedMajorsClientProps {
 export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClientProps) {
   const [data, setData] = useState<IntentionMajor[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedMajor, setSelectedMajor] = useState<IntentionMajor | null>(null)
   const [wishlist, setWishlist] = useState<Set<string>>(new Set())
   const [wishlistItems, setWishlistItems] = useState<any[]>([]) // 保存完整的志愿数据
-  const [careerExplorationCompleted, setCareerExplorationCompleted] = useState(false)
   const [applicationCounts, setApplicationCounts] = useState<Record<string, number>>({})
   const [wishlistCounts, setWishlistCounts] = useState<Record<string, number>>({})
   const [alternatives, setAlternatives] = useState<any[]>([])
@@ -148,8 +148,6 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
           console.error("Error loading wishlist items:", error)
         }
       }
-      const careerCompleted = localStorage.getItem("careerExplorationCompleted")
-      setCareerExplorationCompleted(careerCompleted === "true")
     } catch (error) {
       console.error("Error loading wishlist data:", error)
     }
@@ -198,6 +196,10 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
             }
           } else if (selectedMajor) {
             // 从 Dialog 中点击，需要组合数据
+            // 获取 batch 和 majorGroupName
+            const batch = schoolData.historyScores?.[0]?.batch || null
+            const majorGroupName = schoolData.majorGroupName || null
+            
             wishlistItem = {
               key: schoolKey,
               majorCode: selectedMajor.major.code,
@@ -218,7 +220,8 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
               score: selectedMajor.major.score || "0",
               developmentPotential: selectedMajor.major.developmentPotential || "0",
               selected: true,
-              batch: "本科",
+              batch: batch || "本科",
+              majorGroupName: majorGroupName,
             }
           }
           
@@ -249,47 +252,59 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
     })
   }
 
-  const openSchoolsModal = (major: IntentionMajor) => {
-    setSelectedMajor(major)
-  }
 
   // 打开删除确认对话框
   const handleDeleteClick = (index: number) => {
+    console.log("handleDeleteClick被调用，索引:", index)
     setItemToDelete(index)
     setDeleteConfirmOpen(true)
+    console.log("已设置deleteConfirmOpen为true，itemToDelete为:", index)
   }
 
   // 确认删除志愿项
   const confirmDeleteWishlistItem = () => {
-    if (typeof window === "undefined" || itemToDelete === null) return
+    if (typeof window === "undefined" || itemToDelete === null) {
+      console.log("删除失败: window未定义或itemToDelete为null", itemToDelete)
+      return
+    }
+    
+    console.log("开始删除，索引:", itemToDelete)
     
     setWishlistItems((prevItems) => {
+      console.log("删除前的items:", prevItems.length)
+      const deletedItem = prevItems[itemToDelete]
+      console.log("要删除的item:", deletedItem)
+      
       const newItems = prevItems.filter((_, i) => i !== itemToDelete)
+      console.log("删除后的items:", newItems.length)
+      
       try {
         localStorage.setItem("wishlist-items", JSON.stringify(newItems))
+        console.log("已保存到localStorage")
       } catch (error) {
         console.error("Error saving wishlist items:", error)
       }
+      
       // 同时更新 wishlist Set
-      if (newItems.length < prevItems.length) {
-        const deletedItem = prevItems[itemToDelete]
-        if (deletedItem?.key) {
-          setWishlist((prev) => {
-            const newSet = new Set(prev)
-            newSet.delete(deletedItem.key)
-            try {
-              localStorage.setItem("school-wishlist", JSON.stringify(Array.from(newSet)))
-            } catch (error) {
-              console.error("Error saving wishlist:", error)
-            }
-            return newSet
-          })
-        }
+      if (deletedItem?.key) {
+        setWishlist((prev) => {
+          const newSet = new Set(prev)
+          newSet.delete(deletedItem.key)
+          try {
+            localStorage.setItem("school-wishlist", JSON.stringify(Array.from(newSet)))
+          } catch (error) {
+            console.error("Error saving wishlist:", error)
+          }
+          return newSet
+        })
       }
+      
       return newItems
     })
+    
     setDeleteConfirmOpen(false)
     setItemToDelete(null)
+    console.log("删除完成")
   }
 
   // 上移志愿项
@@ -338,6 +353,34 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
     )
   }
 
+  // 删除确认对话框 - 放在组件顶层，两个tab都能访问
+  const deleteDialog = (
+    <AlertDialog open={deleteConfirmOpen} onOpenChange={(open) => {
+      setDeleteConfirmOpen(open)
+      if (!open) {
+        setItemToDelete(null)
+      }
+    }}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>确认删除</AlertDialogTitle>
+          <AlertDialogDescription>
+            确定要删除此志愿项吗？此操作无法撤销。
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>取消</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={confirmDeleteWishlistItem}
+            className="bg-red-600 hover:bg-red-700 text-white"
+          >
+            确定删除
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+
   if (activeTab === "意向志愿") {
     // 只显示用户保存的志愿数据，不显示默认的 alternatives 数据
     const displayItems = wishlistItems
@@ -359,11 +402,60 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
       )
     }
 
+    // 使用 /majors 里面的数据计算前20%的专业
+    // 从所有专业数据中获取热爱能量分数
+    const allMajorsWithScores = data
+      .map(item => ({
+        code: item.major.code,
+        name: item.major.name,
+        score: parseFloat(item.major.score || "0")
+      }))
+      .filter(major => major.score > 0)
+    
+    // 按热爱能量分数降序排列
+    const sortedAllMajors = [...allMajorsWithScores].sort((a, b) => b.score - a.score)
+    
+    // 计算前20%的数量（向上取整）
+    const top20PercentThresholdIndex = sortedAllMajors.length > 0 
+      ? Math.ceil(sortedAllMajors.length * 0.2) 
+      : 0
+    
+    // 获取前20%的专业代码集合
+    const top20PercentMajorCodes = new Set(
+      sortedAllMajors.slice(0, top20PercentThresholdIndex).map(m => m.code)
+    )
+    
+    // 找出用户志愿中属于前20%的专业
+    const top20PercentInWishlist = displayItems.filter(item => {
+      return top20PercentMajorCodes.has(item.majorCode)
+    })
+    
+    const top20PercentCount = top20PercentInWishlist.length
+    
+    // 获取前20%的专业详细信息（用于展开显示）
+    const top20PercentMajors = top20PercentInWishlist.map(item => ({
+      ...item,
+      displayScore: item.score || item.developmentPotential || "0"
+    }))
+
+    // 调试信息
+    console.log("=== 提醒信息调试 ===")
+    console.log("activeTab:", activeTab)
+    console.log("displayItems.length:", displayItems.length)
+    console.log("displayItems:", displayItems)
+    console.log("allMajorsWithScores.length:", allMajorsWithScores.length)
+    console.log("top20PercentMajorCodes.size:", top20PercentMajorCodes.size)
+    console.log("top20PercentCount:", top20PercentCount)
+    console.log("top20PercentMajors:", top20PercentMajors)
+    console.log("显示条件:", displayItems.length > 0)
+
     return (
-      <div className="flex-1 overflow-auto p-2 space-y-2">
-        {displayItems.map((item, idx) => {
-          return (
-            <Card key={idx} className="p-3">
+      <>
+        <div className="flex-1 overflow-auto p-2 space-y-2">
+          {displayItems.map((item, idx) => {
+            const itemKey = item.key || `${item.majorCode}-${item.schoolName}-${idx}`
+            return (
+            <Card key={itemKey} className="p-3">
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 flex-1">
@@ -371,27 +463,54 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1A4099] text-white flex items-center justify-center text-sm font-bold">
                       {idx + 1}
                     </div>
-                    <div className="flex items-baseline gap-1 flex-wrap flex-1">
-                      <h3 className="font-semibold text-base">{item.schoolName}</h3>
-                      <span className="text-xs text-muted-foreground">({item.majorName})</span>
-                      {item.schoolFeature && (
-                        <div className="flex flex-wrap gap-1 ml-1">
-                          {item.schoolFeature.split(",").slice(0, 3).map((feature: string, i: number) => (
-                            <span key={i} className="text-xs px-1.5 py-0.5 bg-primary/10 text-primary rounded">
-                              {feature}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-1 flex-wrap">
+                        <h3 className="font-semibold text-base">{item.schoolName}</h3>
+                        {item.schoolFeature && (
+                          <div className="flex flex-wrap gap-1 ml-1">
+                            {item.schoolFeature.split(",").slice(0, 3).map((feature: string, i: number) => (
+                              <span key={i} className="text-xs px-1.5 py-0.5 bg-primary/10 text-primary rounded">
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1 flex-wrap mt-1">
+                        <span className="text-xs text-muted-foreground font-semibold">
+                          {item.majorName} ({item.majorCode})
+                        </span>
+                        {item.majorGroupName && (
+                          <span className="text-xs text-muted-foreground">
+                            专业组:{item.majorGroupName}
+                          </span>
+                        )}
+                        {item.score && (
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-muted-foreground">热爱能量:</span>
+                            <span className="text-xs font-semibold text-blue-600">{item.score}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                   {/* 操作按钮 */}
-                  <div className="flex items-center gap-1 flex-shrink-0">
+                  <div 
+                    className="flex items-center gap-1 flex-shrink-0"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                    }}
+                  >
                     {/* 上移按钮 */}
                     <Button
+                      type="button"
                       variant="ghost"
                       size="sm"
-                      onClick={() => moveWishlistItemUp(idx)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        moveWishlistItemUp(idx)
+                      }}
                       disabled={idx === 0}
                       className="h-8 w-8 p-0 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
                       title="上移"
@@ -400,9 +519,14 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     </Button>
                     {/* 下移按钮 */}
                     <Button
+                      type="button"
                       variant="ghost"
                       size="sm"
-                      onClick={() => moveWishlistItemDown(idx)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        moveWishlistItemDown(idx)
+                      }}
                       disabled={idx === displayItems.length - 1}
                       className="h-8 w-8 p-0 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
                       title="下移"
@@ -411,9 +535,15 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     </Button>
                     {/* 删除按钮 */}
                     <Button
+                      type="button"
                       variant="ghost"
                       size="sm"
-                      onClick={() => handleDeleteClick(idx)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        console.log("删除按钮onClick被触发，idx:", idx, "itemKey:", itemKey)
+                        handleDeleteClick(idx)
+                      }}
                       className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600 text-muted-foreground"
                       title="删除"
                     >
@@ -435,25 +565,6 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-xs">
-                  <div className="flex items-center gap-1">
-                    <span className="text-muted-foreground">专业代码:</span>
-                    <span className="font-semibold">{item.majorCode}</span>
-                  </div>
-                  {item.batch && (
-                    <div className="flex items-center gap-1">
-                      <span className="text-muted-foreground">批次:</span>
-                      <span className="font-semibold">{item.batch}</span>
-                    </div>
-                  )}
-                  {item.score && (
-                    <div className="flex items-center gap-1">
-                      <Award className="w-3 h-3 text-blue-600" />
-                      <span className="text-muted-foreground">热爱能量:</span>
-                      <span className="font-semibold text-blue-600">{item.score}</span>
-                    </div>
-                  )}
-                </div>
 
                 {item.historyScore && item.historyScore.length > 0 && item.historyScore[0].historyScore && (
                   <div className="mt-2 pt-2 border-t">
@@ -479,24 +590,39 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                       />
                     </button>
                     {expandedHistoryScores.has(idx) && (
-                      <div className="mt-2 grid grid-cols-4 gap-2 text-xs">
-                        <div className="text-muted-foreground">年份</div>
-                        <div className="text-muted-foreground">最低分</div>
-                        <div className="text-muted-foreground">最低位次</div>
-                        <div className="text-muted-foreground">招生数</div>
-                        {item.historyScore[0].historyScore.slice(0, 3).map((score: any, i: number) => {
-                          const [year, data] = Object.entries(score)[0]
-                          const [minScore, minRank, planNum] = String(data).split(",")
-                          return (
-                            <React.Fragment key={i}>
-                              <div className="font-medium">{year}</div>
-                              <div>{minScore}</div>
-                              <div>{minRank}</div>
-                              <div>{planNum}</div>
-                            </React.Fragment>
-                          )
-                        })}
-                      </div>
+                      <>
+                        <div className="mt-2 grid grid-cols-4 gap-2 text-xs">
+                          <div className="text-muted-foreground">年份</div>
+                          <div className="text-muted-foreground">最低分</div>
+                          <div className="text-muted-foreground">最低位次</div>
+                          <div className="text-muted-foreground">招生数</div>
+                          {item.historyScore[0].historyScore.slice(0, 3).map((score: any, i: number) => {
+                            const [year, data] = Object.entries(score)[0]
+                            const [minScore, minRank, planNum] = String(data).split(",")
+                            return (
+                              <React.Fragment key={i}>
+                                <div className="font-medium">{year}</div>
+                                <div>{minScore}</div>
+                                <div>{minRank}</div>
+                                <div>{planNum}</div>
+                              </React.Fragment>
+                            )
+                          })}
+                        </div>
+                        {/* 批次和备注信息 */}
+                        {(item.historyScore[0].batch || item.historyScore[0].remark) && (
+                          <div className="mt-2">
+                            <div className="p-1 border rounded text-xs text-muted-foreground">
+                              {item.historyScore[0].batch && (
+                                <span className="font-bold whitespace-nowrap">{item.historyScore[0].batch}</span>
+                              )}
+                              {item.historyScore[0].remark && (
+                                <span className={item.historyScore[0].batch ? "ml-2" : ""}>{item.historyScore[0].remark}</span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 )}
@@ -510,12 +636,14 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
             <Card className="p-4 border-2 border-dashed border-gray-300 hover:border-[#1A4099] hover:bg-[#1A4099]/5 transition-all cursor-pointer">
               <div className="flex items-center justify-center gap-2 text-[#1A4099]">
                 <Plus className="w-5 h-5" />
-                <span className="text-sm font-medium">添加更多志愿</span>
+                <span className="text-sm font-medium">热爱能量高的专业({top20PercentCount}个)较少,继续添加</span>
               </div>
             </Card>
           </Link>
         </div>
-      </div>
+        </div>
+        {deleteDialog}
+      </>
     )
   }
 
@@ -545,10 +673,13 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     )}
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-base font-bold text-primary">{item.schools.length}所</span>
-                    <Button variant="ghost" size="sm" onClick={() => openSchoolsModal(item)} className="h-6 px-2">
+                    <Link
+                      href={`/majors/intended/schools?majorCode=${item.major.code}`}
+                      className="flex items-center gap-1 text-base font-bold text-primary hover:underline"
+                    >
+                      <span>{item.schools.length}所</span>
                       <ChevronDown className="w-4 h-4" />
-                    </Button>
+                    </Link>
                   </div>
                 </div>
 
@@ -562,16 +693,6 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     <Award className="w-3 h-3 text-blue-600" />
                     <span className="text-muted-foreground">热爱能量:</span>
                     <span className="font-semibold text-blue-600">{item.major.score}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="text-muted-foreground">职业探索:</span>
-                    <span
-                      className={`text-xs px-1.5 py-0.5 rounded ${
-                        careerExplorationCompleted ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {careerExplorationCompleted ? "已完成" : "未完成"}
-                    </span>
                   </div>
                 </div>
               </div>
@@ -590,142 +711,7 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
         </Button>
       )}
 
-      <Dialog open={!!selectedMajor} onOpenChange={(open) => !open && setSelectedMajor(null)}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {selectedMajor?.major.name} ({selectedMajor?.major.code}) - 院校列表
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-2 mt-4">
-            {selectedMajor?.schools.map((school, idx) => {
-              const schoolKey = `${selectedMajor.major.code}-${school.schoolName}`
-              const isInWishlist = wishlist.has(schoolKey)
-
-              return (
-                <Card key={idx} className="p-2 bg-muted/30">
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h4 className="font-semibold text-sm">{school.schoolName}</h4>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-xs font-semibold ${
-                            school.rankDiffPer > 0 ? "text-green-600" : "text-red-600"
-                          }`}
-                        >
-                          您的位次比年上 {school.rankDiffPer > 0 ? "↑" : "↓"} {Math.abs(school.rankDiffPer).toFixed(1)}%
-                        </span>
-                        <Button
-                          variant={isInWishlist ? "outline" : "default"}
-                          size="sm"
-                          onClick={() => toggleWishlist(schoolKey, school)}
-                          className={`font-bold ${
-                            isInWishlist
-                              ? "border-green-500 text-green-600 hover:bg-green-50 hover:border-green-600"
-                              : "bg-[#1A4099] text-white hover:bg-[#1A4099]/90"
-                          }`}
-                        >
-                          {isInWishlist ? "已加入志愿" : "加入志愿"}
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        <span>
-                          {school.provinceName} · {school.cityName}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Building2 className="w-3 h-3" />
-                        <span>{school.belong}</span>
-                      </div>
-                    </div>
-
-                    {school.schoolFeature && (
-                      <div className="flex flex-wrap gap-1">
-                        {school.schoolFeature.split(",").map((feature, i) => (
-                          <span key={i} className="text-xs px-1.5 py-0.5 bg-primary/10 text-primary rounded">
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="flex items-center gap-3 text-xs">
-                      <div className="flex items-center gap-1">
-                        <GraduationCap className="w-3 h-3 text-blue-600" />
-                        <span className="text-muted-foreground">录取率:</span>
-                        <span className="font-semibold">{school.enrollmentRate}%</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-muted-foreground">就业率:</span>
-                        <span className="font-semibold">{school.employmentRate}%</span>
-                      </div>
-                    </div>
-
-                    {school.historyScores.length > 0 && school.historyScores[0].historyScore && (
-                      <div className="mt-1">
-                        <table className="w-full text-xs border-collapse">
-                          <thead>
-                            <tr className="border-b">
-                              <th className="text-left py-1 text-muted-foreground font-normal">年份</th>
-                              <th className="text-left py-1 text-muted-foreground font-normal">最低分数</th>
-                              <th className="text-left py-1 text-muted-foreground font-normal">最低位次</th>
-                              <th className="text-left py-1 text-muted-foreground font-normal">招生人数</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {school.historyScores[0].historyScore.map((score, i) => {
-                              const [year, data] = Object.entries(score)[0]
-                              const [minScore, minRank, planNum] = data.split(",")
-                              return (
-                                <tr key={i} className="border-b last:border-0">
-                                  <td className="py-1">{year}</td>
-                                  <td className="py-1">{minScore}</td>
-                                  <td className="py-1">{minRank}</td>
-                                  <td className="py-1">{planNum}</td>
-                                </tr>
-                              )
-                            })}
-                          </tbody>
-                        </table>
-                        {school.historyScores[0].remark && (
-                          <div className="mt-1 p-1 border rounded text-xs text-muted-foreground">
-                            {school.historyScores[0].remark}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              )
-            })}
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* 删除确认对话框 */}
-      <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>确认删除</AlertDialogTitle>
-            <AlertDialogDescription>
-              确定要删除此志愿项吗？此操作无法撤销。
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>取消</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={confirmDeleteWishlistItem}
-              className="bg-red-600 hover:bg-red-700 text-white"
-            >
-              确定删除
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {deleteDialog}
     </div>
   )
 }

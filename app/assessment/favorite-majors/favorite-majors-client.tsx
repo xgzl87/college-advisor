@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { Search, Star, ChevronDown, ChevronUp, Loader2, Trash2, Eye, CheckCircle2 } from "lucide-react"
+import { Search, Star, ChevronDown, ChevronUp, Loader2, Trash2, Eye, CheckCircle2, Plus } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { TopNav } from "@/components/top-nav"
@@ -45,6 +45,7 @@ export default function FavoriteMajorsClient() {
   const [completedExplorations, setCompletedExplorations] = useState<Set<string>>(new Set())
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
   const [majorToDelete, setMajorToDelete] = useState<string | null>(null)
+  const [intentionData, setIntentionData] = useState<any[]>([])
 
   // 从 localStorage 读取心动专业列表
   useEffect(() => {
@@ -69,6 +70,18 @@ export default function FavoriteMajorsClient() {
       .catch((error) => {
         console.error("[v0] Error loading user score data:", error)
         setLoading(false)
+      })
+  }, [])
+
+  // 加载 intention.json 数据用于计算前20%
+  useEffect(() => {
+    fetch("/data/intention.json")
+      .then((res) => res.json())
+      .then((json) => {
+        setIntentionData(json)
+      })
+      .catch((error) => {
+        console.error("[v0] Error loading intention data:", error)
       })
   }, [])
 
@@ -144,6 +157,35 @@ export default function FavoriteMajorsClient() {
     const query = searchQuery.toLowerCase()
     return major.majorName.toLowerCase().includes(query) || major.majorCode.toLowerCase().includes(query)
   })
+
+  // 计算热爱能量前20%的专业
+  const allMajorsWithScores = intentionData
+    .map((item: any) => ({
+      code: item.major.code,
+      name: item.major.name,
+      score: parseFloat(item.major.score || "0")
+    }))
+    .filter((major: any) => major.score > 0)
+  
+  // 按热爱能量分数降序排列
+  const sortedAllMajors = [...allMajorsWithScores].sort((a: any, b: any) => b.score - a.score)
+  
+  // 计算前20%的数量（向上取整）
+  const top20PercentThresholdIndex = sortedAllMajors.length > 0 
+    ? Math.ceil(sortedAllMajors.length * 0.2) 
+    : 0
+  
+  // 获取前20%的专业代码集合
+  const top20PercentMajorCodes = new Set(
+    sortedAllMajors.slice(0, top20PercentThresholdIndex).map((m: any) => m.code)
+  )
+  
+  // 找出用户心动专业中属于前20%的专业
+  const top20PercentInFavorites = favoriteMajors.filter((major) => {
+    return top20PercentMajorCodes.has(major.majorCode)
+  })
+  
+  const top20PercentCount = top20PercentInFavorites.length
 
   // 默认设置前两个专业为已完成职业探索（用于展示）
   useEffect(() => {
