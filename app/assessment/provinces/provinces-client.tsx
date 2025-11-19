@@ -301,7 +301,7 @@ export default function ProvincesClient() {
                   className="flex-1"
                   variant={selectedProvinces.has(selectedProvince[" name"]) ? "outline" : "default"}
                 >
-                  {selectedProvinces.has(selectedProvince[" name"]) ? "取消选择" : "选择此省份"}
+                  {selectedProvinces.has(selectedProvince[" name"]) ? "取消选择" : <span className="font-bold text-[#1A4099]">选择此省份</span>}
                 </Button>
               </div>
             </div>

@@ -49,7 +49,7 @@ interface Mechanism {
 }
 
 // Portrait 分类类型
-type PortraitCategory = "热爱高潜能" | "兴趣驱动型" | "能力高效型" | "迷茫待探索"
+type PortraitCategory = "兴趣强度高" | "驱动能力强" | "成果效率高" | "现状成就低"
 
 // Challenge 类型映射
 const challengeTypeMap: Record<string, string> = {
@@ -61,26 +61,26 @@ const challengeTypeMap: Record<string, string> = {
 // 获取 portrait 分类
 function getPortraitCategory(portrait: Portrait): PortraitCategory {
   if (portrait.like_obvious && portrait.talent_obvious) {
-    return "热爱高潜能"
+    return "兴趣强度高"
   } else if (portrait.like_obvious && !portrait.talent_obvious) {
-    return "兴趣驱动型"
+    return "驱动能力强"
   } else if (!portrait.like_obvious && portrait.talent_obvious) {
-    return "能力高效型"
+    return "成果效率高"
   } else {
-    return "迷茫待探索"
+    return "现状成就低"
   }
 }
 
 // 根据分类获取对应的图标
 function getPortraitIcon(category: PortraitCategory) {
   switch (category) {
-    case "热爱高潜能":
+    case "兴趣强度高":
       return <Crown className="w-5 h-5 text-[#FF7F50]" />
-    case "兴趣驱动型":
+    case "驱动能力强":
       return <Rocket className="w-5 h-5 text-[#1A4099]" />
-    case "能力高效型":
+    case "成果效率高":
       return <Zap className="w-5 h-5 text-[#FF7F50]" />
-    case "迷茫待探索":
+    case "现状成就低":
       return <Compass className="w-5 h-5 text-[#1A4099]" />
     default:
       return <Sparkles className="w-5 h-5 text-[#1A4099]" />
@@ -442,15 +442,15 @@ export function PersonalProfileClient() {
   const [elements, setElements] = useState<Element[]>([])
   const [mechanisms, setMechanisms] = useState<Mechanism[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<string>("热爱高潜能")
+  const [activeTab, setActiveTab] = useState<string>("兴趣强度高")
   const [selectedDimension, setSelectedDimension] = useState<string | null>(null)
 
   // 将 portraits 按分类分组
   const portraitsByCategory = {
-    热爱高潜能: portraits.filter((p) => p.like_obvious && p.talent_obvious),
-    兴趣驱动型: portraits.filter((p) => p.like_obvious && !p.talent_obvious),
-    能力高效型: portraits.filter((p) => !p.like_obvious && p.talent_obvious),
-    迷茫待探索: portraits.filter((p) => !p.like_obvious && !p.talent_obvious)
+    兴趣强度高: portraits.filter((p) => p.like_obvious && p.talent_obvious),
+    驱动能力强: portraits.filter((p) => p.like_obvious && !p.talent_obvious),
+    成果效率高: portraits.filter((p) => !p.like_obvious && p.talent_obvious),
+    现状成就低: portraits.filter((p) => !p.like_obvious && !p.talent_obvious)
   }
 
   useEffect(() => {
@@ -526,16 +526,16 @@ export function PersonalProfileClient() {
         <Card className="p-2 bg-white border-2 border-[#1A4099]/20 shadow-lg mb-1">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-1">
-              <TabsTrigger value="热爱高潜能">热爱高潜能</TabsTrigger>
-              <TabsTrigger value="兴趣驱动型">兴趣驱动型</TabsTrigger>
-              <TabsTrigger value="能力高效型">能力高效型</TabsTrigger>
-              <TabsTrigger value="迷茫待探索">迷茫待探索</TabsTrigger>
+              <TabsTrigger value="兴趣强度高">兴趣强度高</TabsTrigger>
+              <TabsTrigger value="驱动能力强">驱动能力强</TabsTrigger>
+              <TabsTrigger value="成果效率高">成果效率高</TabsTrigger>
+              <TabsTrigger value="现状成就低">现状成就低</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="热爱高潜能">
+            <TabsContent value="兴趣强度高">
               <div className="space-y-1">
-                {portraitsByCategory.热爱高潜能.length > 0 ? (
-                  portraitsByCategory.热爱高潜能.map((portrait) => (
+                {portraitsByCategory.兴趣强度高.length > 0 ? (
+                  portraitsByCategory.兴趣强度高.map((portrait) => (
                     <PortraitCard
                       key={portrait.id}
                       portrait={portrait}
@@ -550,10 +550,10 @@ export function PersonalProfileClient() {
               </div>
             </TabsContent>
 
-            <TabsContent value="兴趣驱动型">
+            <TabsContent value="驱动能力强">
               <div className="space-y-1">
-                {portraitsByCategory.兴趣驱动型.length > 0 ? (
-                  portraitsByCategory.兴趣驱动型.map((portrait) => (
+                {portraitsByCategory.驱动能力强.length > 0 ? (
+                  portraitsByCategory.驱动能力强.map((portrait) => (
                     <PortraitCard
                       key={portrait.id}
                       portrait={portrait}
@@ -568,10 +568,10 @@ export function PersonalProfileClient() {
               </div>
             </TabsContent>
 
-            <TabsContent value="能力高效型">
+            <TabsContent value="成果效率高">
               <div className="space-y-1">
-                {portraitsByCategory.能力高效型.length > 0 ? (
-                  portraitsByCategory.能力高效型.map((portrait) => (
+                {portraitsByCategory.成果效率高.length > 0 ? (
+                  portraitsByCategory.成果效率高.map((portrait) => (
                     <PortraitCard
                       key={portrait.id}
                       portrait={portrait}
@@ -586,10 +586,10 @@ export function PersonalProfileClient() {
               </div>
             </TabsContent>
 
-            <TabsContent value="迷茫待探索">
+            <TabsContent value="现状成就低">
               <div className="space-y-1">
-                {portraitsByCategory.迷茫待探索.length > 0 ? (
-                  portraitsByCategory.迷茫待探索.map((portrait) => (
+                {portraitsByCategory.现状成就低.length > 0 ? (
+                  portraitsByCategory.现状成就低.map((portrait) => (
                     <PortraitCard
                       key={portrait.id}
                       portrait={portrait}

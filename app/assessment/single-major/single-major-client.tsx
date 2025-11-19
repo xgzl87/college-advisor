@@ -149,13 +149,6 @@ function QuestionnaireModal({ open, onOpenChange, elementIds }: QuestionnaireMod
           <div className="text-center py-12 text-muted-foreground">暂无相关问卷</div>
         ) : (
           <div className="space-y-6">
-            <div className="space-y-2">
-              <div className="w-full bg-secondary rounded-full h-3">
-                <div className="bg-primary h-3 rounded-full transition-all" style={{ width: `${progress}%` }} />
-              </div>
-              <p className="text-xs text-right text-muted-foreground">{Math.round(progress)}% 完成</p>
-            </div>
-
             {currentQuestion && (
               <div className="space-y-4">
                 <div className="space-y-2">

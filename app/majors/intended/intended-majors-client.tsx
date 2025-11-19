@@ -14,7 +14,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { ChevronDown, Award, Building2, MapPin, GraduationCap, ArrowUp, Search, Trash2, ArrowDown, Plus } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { ChevronDown, Award, Building2, MapPin, GraduationCap, Search, Trash2, Plus, ArrowUp } from "lucide-react"
 
 interface Major {
   code: string
@@ -79,6 +80,14 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
   const [expandedHistoryScores, setExpandedHistoryScores] = useState<Set<number>>(new Set())
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [groupData, setGroupData] = useState<any[]>([])
+  const [selectedGroupInfo, setSelectedGroupInfo] = useState<{
+    schoolName: string
+    majorGroupName: string
+  } | null>(null)
+  const [groupDialogOpen, setGroupDialogOpen] = useState(false)
 
   useEffect(() => {
     fetch("/data/intention.json")
@@ -90,6 +99,20 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
       .catch((error) => {
         console.error("[v0] Error loading intention data:", error)
         setLoading(false)
+      })
+  }, [])
+
+  // 加载专业组数据
+  useEffect(() => {
+    fetch("/data/group.json")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.data && Array.isArray(json.data)) {
+          setGroupData(json.data)
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading group data:", error)
       })
   }, [])
 
@@ -307,29 +330,34 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
     console.log("删除完成")
   }
 
-  // 上移志愿项
-  const moveWishlistItemUp = (index: number) => {
-    if (typeof window === "undefined" || index === 0) return // 已经是第一个，无法上移
-    setWishlistItems((prevItems) => {
-      const newItems = [...prevItems]
-      ;[newItems[index - 1], newItems[index]] = [newItems[index], newItems[index - 1]]
-      try {
-        localStorage.setItem("wishlist-items", JSON.stringify(newItems))
-      } catch (error) {
-        console.error("Error saving wishlist items:", error)
-      }
-      return newItems
-    })
+  // 拖拽处理函数
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index)
   }
 
-  // 下移志愿项
-  const moveWishlistItemDown = (index: number) => {
-    if (typeof window === "undefined") return
-    
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    setDragOverIndex(index)
+  }
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null)
+  }
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault()
+    if (draggedIndex === null || draggedIndex === dropIndex) {
+      setDraggedIndex(null)
+      setDragOverIndex(null)
+      return
+    }
+
     setWishlistItems((prevItems) => {
-      if (index === prevItems.length - 1) return prevItems // 已经是最后一个，无法下移
       const newItems = [...prevItems]
-      ;[newItems[index], newItems[index + 1]] = [newItems[index + 1], newItems[index]]
+      const draggedItem = newItems[draggedIndex]
+      newItems.splice(draggedIndex, 1)
+      newItems.splice(dropIndex, 0, draggedItem)
+      
       try {
         localStorage.setItem("wishlist-items", JSON.stringify(newItems))
       } catch (error) {
@@ -337,6 +365,14 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
       }
       return newItems
     })
+
+    setDraggedIndex(null)
+    setDragOverIndex(null)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+    setDragOverIndex(null)
   }
 
   const scrollToTop = () => {
@@ -455,17 +491,29 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
           {displayItems.map((item, idx) => {
             const itemKey = item.key || `${item.majorCode}-${item.schoolName}-${idx}`
             return (
-            <Card key={itemKey} className="p-3">
+            <Card 
+              key={itemKey} 
+              className={`p-3 relative cursor-move transition-all ${
+                draggedIndex === idx ? "opacity-50" : ""
+              } ${dragOverIndex === idx ? "border-2 border-[#1A4099] border-dashed" : ""}`}
+              draggable
+              onDragStart={() => handleDragStart(idx)}
+              onDragOver={(e) => handleDragOver(e, idx)}
+              onDragLeave={handleDragLeave}
+              onDrop={(e) => handleDrop(e, idx)}
+              onDragEnd={handleDragEnd}
+            >
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 flex-1">
-                    {/* 序号 */}
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1A4099] text-white flex items-center justify-center text-sm font-bold">
-                      {idx + 1}
-                    </div>
                     <div className="flex-1">
-                      <div className="flex items-baseline gap-1 flex-wrap">
-                        <h3 className="font-semibold text-base">{item.schoolName}</h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {/* 序号 */}
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#1A4099] text-white flex items-center justify-center text-xs font-bold">
+                          {idx + 1}
+                        </div>
+                        <div className="flex items-baseline gap-1 flex-wrap">
+                          <h3 className="font-semibold text-base">{item.schoolName}</h3>
                         {item.schoolFeature && (
                           <div className="flex flex-wrap gap-1 ml-1">
                             {item.schoolFeature.split(",").slice(0, 3).map((feature: string, i: number) => (
@@ -475,15 +523,27 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                             ))}
                           </div>
                         )}
+                        </div>
                       </div>
                       <div className="flex items-center gap-1 flex-wrap mt-1">
                         <span className="text-xs text-muted-foreground font-semibold">
                           {item.majorName} ({item.majorCode})
                         </span>
                         {item.majorGroupName && (
-                          <span className="text-xs text-muted-foreground">
-                            专业组:{item.majorGroupName}
-                          </span>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              setSelectedGroupInfo({
+                                schoolName: item.schoolName,
+                                majorGroupName: item.majorGroupName || "",
+                              })
+                              setGroupDialogOpen(true)
+                            }}
+                            className="text-xs text-muted-foreground hover:text-primary hover:underline cursor-pointer"
+                          >
+                            <span className="font-semibold">专业组</span>:{item.majorGroupName}
+                          </button>
                         )}
                         {item.score && (
                           <div className="flex items-center gap-1">
@@ -501,38 +561,6 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                       e.stopPropagation()
                     }}
                   >
-                    {/* 上移按钮 */}
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        moveWishlistItemUp(idx)
-                      }}
-                      disabled={idx === 0}
-                      className="h-8 w-8 p-0 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
-                      title="上移"
-                    >
-                      <ArrowUp className="w-4 h-4" />
-                    </Button>
-                    {/* 下移按钮 */}
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        moveWishlistItemDown(idx)
-                      }}
-                      disabled={idx === displayItems.length - 1}
-                      className="h-8 w-8 p-0 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
-                      title="下移"
-                    >
-                      <ArrowDown className="w-4 h-4" />
-                    </Button>
                     {/* 删除按钮 */}
                     <Button
                       type="button"
@@ -544,7 +572,10 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                         console.log("删除按钮onClick被触发，idx:", idx, "itemKey:", itemKey)
                         handleDeleteClick(idx)
                       }}
-                      className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600 text-muted-foreground"
+                      onDragStart={(e) => {
+                        e.stopPropagation()
+                      }}
+                      className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600 text-muted-foreground cursor-pointer"
                       title="删除"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -564,6 +595,22 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
                     <span>{item.belong}</span>
                   </div>
                 </div>
+                {(item.enrollmentRate || item.employmentRate) && (
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    {item.enrollmentRate && (
+                      <div>
+                        <span>升学率: </span>
+                        <span className="font-semibold">{item.enrollmentRate}</span>
+                      </div>
+                    )}
+                    {item.employmentRate && (
+                      <div>
+                        <span>就业率: </span>
+                        <span className="font-semibold">{item.employmentRate}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
 
 
                 {item.historyScore && item.historyScore.length > 0 && item.historyScore[0].historyScore && (
@@ -643,6 +690,107 @@ export default function IntendedMajorsClient({ activeTab }: IntendedMajorsClient
         </div>
         </div>
         {deleteDialog}
+        
+        {/* 专业组信息弹出框 */}
+        <Dialog open={groupDialogOpen} onOpenChange={setGroupDialogOpen}>
+          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>
+                {selectedGroupInfo?.schoolName} - {selectedGroupInfo?.majorGroupName} 专业组信息
+              </DialogTitle>
+            </DialogHeader>
+            <div className="mt-4">
+              {(() => {
+                if (groupData.length === 0) {
+                  return (
+                    <div className="text-center text-muted-foreground py-8">
+                      <div>暂无专业组信息</div>
+                      <div className="text-xs mt-2">数据未加载或为空</div>
+                    </div>
+                  )
+                }
+
+                // 按 majorGroupInfo 分组
+                const groupedByInfo = groupData.reduce((acc, item) => {
+                  const key = item.majorGroupInfo || "未分组"
+                  if (!acc[key]) {
+                    acc[key] = []
+                  }
+                  acc[key].push(item)
+                  return acc
+                }, {} as Record<string, typeof groupData>)
+
+                return Object.entries(groupedByInfo).map(([groupInfo, majors]) => {
+                  // 找出最低的热爱能量分数
+                  const scores = majors
+                    .map(m => parseInt(m.developmentPotential || "0"))
+                    .filter(s => s > 0)
+                  const minScore = scores.length > 0 ? Math.min(...scores) : null
+                  
+                  // 找出所有最低分数的专业（包括并列最低的，如51和52都是最低时）
+                  const lowestScoreMajors = minScore !== null 
+                    ? majors.filter(m => {
+                        const score = parseInt(m.developmentPotential || "0")
+                        return score > 0 && (score === minScore || score === minScore + 1)
+                      })
+                    : []
+                  
+                  return (
+                    <div key={groupInfo} className="mb-6">
+                      {lowestScoreMajors.length > 0 && (
+                        <div className="mb-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-800">
+                          <div className="font-semibold mb-1">⚠️ 提醒</div>
+                          <div>该专业组中包含热爱能量低的专业，选择该专业组可能会被调剂到这些专业，请谨慎选择。</div>
+                        </div>
+                      )}
+                      <h3 className="font-semibold text-sm mb-3">{groupInfo}</h3>
+                      <div className="border rounded">
+                        <table className="w-full text-xs">
+                          <thead>
+                            <tr className="border-b bg-muted/50">
+                              <th className="text-left py-2 px-2 font-medium">专业</th>
+                              <th className="text-left py-2 px-2 font-medium">批次</th>
+                              <th className="text-left py-2 px-2 font-medium">招生人数</th>
+                              <th className="text-left py-2 px-2 font-medium">学费</th>
+                              <th className="text-left py-2 px-2 font-medium">学制</th>
+                              <th className="text-left py-2 px-2 font-medium">热爱能量</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {majors.map((major, idx) => {
+                              const score = parseInt(major.developmentPotential || "0")
+                              const isLowest = minScore !== null && score > 0 && (score === minScore || score === minScore + 1)
+                              
+                              return (
+                                <tr 
+                                  key={idx} 
+                                  className={`border-b last:border-0 hover:bg-muted/30 ${isLowest ? "bg-yellow-50/50" : ""}`}
+                                >
+                                  <td className="py-2 px-2">
+                                    <div className="font-medium">{major.majorName}</div>
+                                    <div className="text-xs text-muted-foreground mt-0.5">{major.majorCode}</div>
+                                  </td>
+                                  <td className="py-2 px-2 text-muted-foreground">{major.batch || "-"}</td>
+                                  <td className="py-2 px-2 text-muted-foreground">{major.num || "-"}</td>
+                                  <td className="py-2 px-2 text-muted-foreground">{major.tuition ? `${major.tuition}元` : "-"}</td>
+                                  <td className="py-2 px-2 text-muted-foreground">{major.studyPeriod || "-"}</td>
+                                  <td className={`py-2 px-2 font-medium ${isLowest ? "text-red-600" : "text-blue-600"}`}>
+                                    {major.developmentPotential || "-"}
+                                    {isLowest && <span className="ml-1 text-red-500">⚠️</span>}
+                                  </td>
+                                </tr>
+                              )
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )
+                })
+              })()}
+            </div>
+          </DialogContent>
+        </Dialog>
       </>
     )
   }

@@ -148,10 +148,10 @@ export default function HomePage() {
         <div className="relative z-10 max-w-lg mx-auto w-full flex flex-col items-center justify-center">
           <div className="flex flex-col items-center gap-3">
             <p className="text-base md:text-lg text-white/90 font-medium px-4">
-              找到你天生的专业方向
+              找到你的喜欢与天赋
             </p>
             <p className="text-xs md:text-sm text-white/70 font-normal px-1 text-center leading-relaxed">
-              基于科学评估与百万数据，为你定制专属的升学路径
+              不被分数定义，用选择创造未来！
             </p>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
                 {/* 描述和统计 */}
                 <div className="space-y-3">
                   <p className="text-sm text-[#1A4099] font-semibold leading-relaxed">
-                    解锁你的生涯潜能图谱，定制一份<span className="font-bold text-[#FF7F50]">专属升学规划</span>
+                    全面解锁你的喜欢与天赋，定制<span className="font-bold text-[#FF7F50]">专属志愿规划</span>
                   </p>
 
                   {/* 稀缺性提示 */}

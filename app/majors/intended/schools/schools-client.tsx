@@ -240,7 +240,7 @@ export default function IntendedMajorsSchoolsClient() {
                           }}
                           className="text-xs text-muted-foreground hover:text-primary hover:underline cursor-pointer"
                         >
-                          专业组:{school.majorGroupName}
+                          <span className="font-semibold">专业组</span>:{school.majorGroupName}
                         </button>
                       )}
                     </div>
